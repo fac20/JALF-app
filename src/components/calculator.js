@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import "./toggle.css"
 import { InputBox } from "./formComponents"
 
-export function Calculator() {
+export default function Calculator() {
     const [value, setValue] = React.useState(false);
     const [unwell, setUnwell] = React.useState(false);
     const [exercise, setExercise] = React.useState(false);
