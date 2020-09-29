@@ -5,7 +5,8 @@ import { InputBox } from "./formComponents"
 export function Calculator() {
     const [value, setValue] = React.useState(false);
     return (
-        <>
+        <div className="calculator">
+
             <InputBox label="Blood Glucose Level" />
             <InputBox label="Carbohydrate Portions" />
             <div className="toggle">
@@ -14,7 +15,7 @@ export function Calculator() {
                 handleToggle={() => setValue(!value)} 
             />
             </div>
-        </>
+        </div>
     )
 }
 
