@@ -1,47 +1,44 @@
 import React, { Component } from 'react';
+import "./toggle.css"
+import { InputBox } from "./formComponents"
 
-
-function Calculator() {
-    
-}
-
-
-export function InputBox({ label }) {
-    const [input, setInput] = React.useState("");
-
-    const handleInputChange = event => {
-        setInput(event.target.value);
-    }
-
+export function Calculator() {
+    const [value, setValue] = React.useState(false);
     return (
         <>
-            <label htmlFor={label}>{label}</label>
-            <input 
-                id={label} 
-                name={label} 
-                type="text" 
-                value={input}
-                onChange={handleInputChange}
-            ></input>
+            <InputBox label="Blood Glucose Level" />
+            <InputBox label="Carbohydrate Portions" />
+            <div className="toggle">
+            <Switch 
+                isOn={value}
+                handleToggle={() => setValue(!value)} 
+            />
+            </div>
         </>
     )
 }
 
-export function Toggle({ mmol, handleToggle }) {
+
+export function Switch({ isOn, handleToggle }) {
     const [state, setState] = React.useState(true);
 
     return (
         <>
-            <input
-                checked={mmol}
-                onChange={handleToggle}
-                className="toggle"
-                type="checkbox">
-            </input>
-            <label htmlFor={`toggle`}>
-                <span className={`switch-button`} />
-            </label>
+          <input
+            checked={isOn}
+            onChange={handleToggle}
+            className="react-switch-checkbox"
+            id={`react-switch-new`}
+            type="checkbox"
+          />
+          <label
+            style={{ background: isOn && '#06D6A0' }}
+            className="react-switch-label"
+            htmlFor={`react-switch-new`}
+          >
+            <span className={`react-switch-button`} />
+          </label>
         </>
-    );
+      );
 };
 
