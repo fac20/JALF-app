@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import "./toggle.css"
 import { InputBox } from "./formComponents"
+import Calculate from '../utils/calculate';
 
 export default function Calculator() {
-    const [value, setValue] = React.useState(false);
+    const [unitSwitch, setUnitSwitch] = React.useState(false);
     const [unwell, setUnwell] = React.useState(false);
     const [exercise, setExercise] = React.useState(false);
     const [period, setPeriod] = React.useState(false);
 
+    const [bloodGlucose, setBloodGlucose] = React.useState("")
+    const [carbPortion, setCarbPortion] = React.useState("")
+    const [insulinRatio, setInsulinRatio] = React.useState("");
+    const [carbRatio, setCarbRatio] = React.useState("");
+
+    
     const handleUnwellChange = event => {
         setUnwell(!unwell);
     }
@@ -22,11 +29,11 @@ export default function Calculator() {
     return (
         <div className="calculator">
 
-            <InputBox label="Blood Glucose Level" />
-            <InputBox label="Carbohydrate Portions" />
+            <InputBox label="Blood Glucose Level" setStateFunction={setBloodGlucose} state={bloodGlucose} />
+            <InputBox label="Carbohydrate Portions" setStateFunction={setCarbPortion}/>
             
-            <InputBox label="Ratio" placeholder="units" /><span>:</span>
-            <InputBox placeholder="carbohydrates" /><span>g</span>
+            <InputBox label="Ratio" placeholder="units" setStateFunction={setInsulinRatio}/><span>:</span>
+            <InputBox placeholder="carbohydrates" setStateFunction={setCarbRatio}/><span>g</span>
             <fieldset>
                 <label for="health">Feeling unwell?</label> 
                 <input 
@@ -54,10 +61,14 @@ export default function Calculator() {
             </fieldset>
             <div className="toggle">
                 <Switch 
-                    isOn={value}
-                    handleToggle={() => setValue(!value)} 
+                    isOn={unitSwitch}
+                    handleToggle={() => setUnitSwitch(!unitSwitch)} 
                 />
             </div>
+            <button type="submit" onClick={() => {
+                const result = Calculate(bloodGlucose, carbPortion, insulinRatio, carbRatio, 4, 10, exercise, 15, 30, unwell);
+                console.log(result);
+            }}>Calculate!</button>
         </div>
     )
 }
@@ -85,4 +96,3 @@ export function Switch({ isOn, handleToggle }) {
         </>
       );
 };
-

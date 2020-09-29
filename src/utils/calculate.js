@@ -1,15 +1,16 @@
-function Calculate(bloodGlucose, carbPortion, ratio, min, max, exercise, intensity, duration, ill) {
+function Calculate(bloodGlucose, carbPortion, insulinRatio, carbRatio, min, max, exercise, intensity, duration, unwell) {
     //range = [4,10]
+    let ratio = parseInt(carbRatio) / parseInt(insulinRatio);
     let correctionDose = 0;
     if (bloodGlucose>max) {
-        correctionDose = Math.ceil((bloodGlucose-max)/3);
+        correctionDose = Math.ceil((parseInt(bloodGlucose) - parseInt(max)/3));
     } else if (bloodGlucose<min) {
         return 'message';
         //display warning message that blood sugar is too low, eat 20 grams of quick acting sugar - don't do any insulin until your blood glucose is within a safe range 
     } 
     let units = carbPortion / ratio;
     let totalUnits = correctionDose + units;  
-    
+
     if (exercise === true) {
         if (intensity === "low" && duration<30) {
             return totalUnits;
@@ -25,7 +26,7 @@ function Calculate(bloodGlucose, carbPortion, ratio, min, max, exercise, intensi
             return totalUnits = totalUnits * 0.8
         }
     }
-    if (ill === true){
+    if (unwell === true){
         totalUnits = totalUnits * 1.2;
         return totalUnits;
     }
