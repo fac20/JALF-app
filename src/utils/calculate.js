@@ -3,7 +3,7 @@ function Calculate(bloodGlucose, carbPortion, insulinRatio, carbRatio, min, max,
     let ratio = parseInt(carbRatio) / parseInt(insulinRatio);
     let correctionDose = 0;
     if (bloodGlucose>max) {
-        correctionDose = Math.ceil((parseInt(bloodGlucose) - parseInt(max)/3));
+        correctionDose = Math.ceil((parseInt(bloodGlucose) - parseInt(max))/3);
     } else if (bloodGlucose<min) {
         return 'message';
         //display warning message that blood sugar is too low, eat 20 grams of quick acting sugar - don't do any insulin until your blood glucose is within a safe range 
