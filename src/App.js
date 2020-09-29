@@ -23,7 +23,7 @@ function App() {
 
   return (
     <main>
-      {page === "/" && <Landing setPage={setPage} />}
+      {page === "/" && <Landing setPage={setPage} navigate={navigate} />}
       {/* {page === "/login" && <Login />}
       {page === "/signup" && <Signup />}
       {page === "/calculate" && <Calculate />} */}
