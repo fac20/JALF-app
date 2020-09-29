@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export function InputBox({ label }) {
+export function InputBox({ label, placeholder }) {
     const [input, setInput] = React.useState("");
 
     const handleInputChange = event => {
@@ -11,8 +11,9 @@ export function InputBox({ label }) {
         <>
             <label htmlFor={label}>{label}</label>
             <input 
-                id={label} 
-                name={label} 
+                id={label}
+                placeholder={placeholder} 
+                name={label || placeholder} 
                 type="text" 
                 value={input}
                 onChange={handleInputChange}
