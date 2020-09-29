@@ -3,13 +3,14 @@ import "./toggle.css";
 import { InputBox } from "../components/formComponents";
 import Calculator from "../components/calculator";
 
-function Calculate(BG, CP, ratio, min, max, exercise, intensity, duration) {
+function Calculate(BG, CP, ratio, min, max, exercise, intensity, duration, ill) {
     //range = [min,max]
     let correctionDose = 0;
     if (BG>max) {
         correctionDose = Math.ceil((BG-max)/3);
     } else if (BG<min) {
-        //display warning message that blood sugar is too low, eat 20 grams of quick acting sugar - don't do any insulin until your blood glucose if within a safe range 
+        return 'message';
+        //display warning message that blood sugar is too low, eat 20 grams of quick acting sugar - don't do any insulin until your blood glucose is within a safe range 
     } 
     let units = CP / ratio;
     let totalUnits = correctionDose + units;  
@@ -19,18 +20,22 @@ function Calculate(BG, CP, ratio, min, max, exercise, intensity, duration) {
             return totalUnits;
         } else if (intensity === "low" && duration < 60) {
                 totalUnits = totalUnits * 0.9;
+                return totalUnits;
         } else if (intensity === "high" && duration > 60) {
-            totalUnits = totalUnits * 0.5 // double check numbers
+            totalUnits = totalUnits * 0.5 // double check numbers;
+            return totalUnits;
         } else if (intensity === "med" && duration > 60) {
-            totalUnits = totalUnits * 0.7
+            return totalUnits = totalUnits * 0.7
         } else if (intensity !== "low" && duration > 30) {
-            totalUnits = totalUnits * 0.8
+            return totalUnits = totalUnits * 0.8
         }
     }
     if (ill === true){
         totalUnits = totalUnits * 1.2;
+        return totalUnits;
     }
-    return totalUnits
+    return totalUnits;
+    
 }
 
 export default Calculate;
