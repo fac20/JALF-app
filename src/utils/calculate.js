@@ -1,10 +1,5 @@
-import React, { Component } from 'react';
-import "./toggle.css";
-import { InputBox } from "../components/formComponents";
-import Calculator from "../components/calculator";
-
 function Calculate(BG, CP, ratio, min, max, exercise, intensity, duration, ill) {
-    //range = [min,max]
+    //range = [4,10]
     let correctionDose = 0;
     if (BG>max) {
         correctionDose = Math.ceil((BG-max)/3);
