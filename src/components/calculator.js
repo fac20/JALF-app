@@ -14,6 +14,8 @@ export default function Calculator() {
     const [insulinRatio, setInsulinRatio] = React.useState("");
     const [carbRatio, setCarbRatio] = React.useState("");
 
+    const [result, setResult] = React.useState("");
+
     
     const handleUnwellChange = event => {
         setUnwell(!unwell);
@@ -67,8 +69,9 @@ export default function Calculator() {
             </div>
             <button type="submit" onClick={() => {
                 const result = Calculate(bloodGlucose, carbPortion, insulinRatio, carbRatio, 4, 10, exercise, 15, 30, unwell);
-                console.log(result);
+                setResult(result);
             }}>Calculate!</button>
+            {result ? <output>{result}</output> : null}
         </div>
     )
 }
