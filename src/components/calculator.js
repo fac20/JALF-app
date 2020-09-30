@@ -1,12 +1,20 @@
 import React from 'react';
 import './toggle.css';
 import { InputBox } from './formComponents';
+import Calculate from '../utils/calculate';
 
 export default function Calculator() {
   const [value, setValue] = React.useState(false);
   const [unwell, setUnwell] = React.useState(false);
   const [exercise, setExercise] = React.useState(false);
   const [period, setPeriod] = React.useState(false);
+
+  const [bloodGlucose, setBloodGlucose] = React.useState('');
+  const [carbPortion, setCarbPortion] = React.useState('');
+  const [insulinRatio, setInsulinRatio] = React.useState('');
+  const [carbRatio, setCarbRatio] = React.useState('');
+
+  const [result, setResult] = React.useState('');
 
   const handleUnwellChange = () => {
     setUnwell(!unwell);
@@ -21,18 +29,22 @@ export default function Calculator() {
 
   return (
     <div className="calculator">
-      <InputBox label="Blood Glucose Level" />
-      <InputBox label="Carbohydrate Portions" />
+      <InputBox
+        label="Blood Glucose Level"
+        setStateFunction={setBloodGlucose}
+        state={bloodGlucose}
+      />
+      <InputBox label="Carbohydrate Portions" setStateFunction={setCarbPortion} />
 
-      <InputBox label="Ratio" placeholder="units" />
+      <InputBox label="Ratio" placeholder="units" setStateFunction={setInsulinRatio} />
       <span>:</span>
-      <InputBox placeholder="carbohydrates" />
+      <InputBox placeholder="carbohydrates" setStateFunction={setCarbRatio} />
       <span>g</span>
       <fieldset>
-        <label htmlFor="health">Feeling unwell?</label>
-        <input type="checkbox" id="health" name="health" onChange={handleUnwellChange} />
+        <label for="health">Feeling unwell?</label>
+        <input type="checkbox" id="health" name="health" onChange={handleUnwellChange}></input>
 
-        <label htmlFor="exercise">Exercise?</label>
+        <label for="exercise">Exercise?</label>
         <input
           type="checkbox"
           id="exercise"
@@ -51,11 +63,32 @@ export default function Calculator() {
           </div>
         ) : null}
         <label for="period">Period?</label>
-        <input type="checkbox" id="period" name="period" onChange={handlePeriodChange} />
+        <input type="checkbox" id="period" name="period" onChange={handlePeriodChange}></input>
       </fieldset>
       <div className="toggle">
-        <Switch isOn={value} handleToggle={() => setValue(!value)} />
+        <Switch isOn={unitSwitch} handleToggle={() => setUnitSwitch(!unitSwitch)} />
       </div>
+      <button
+        type="submit"
+        onClick={() => {
+          const result = Calculate(
+            bloodGlucose,
+            carbPortion,
+            insulinRatio,
+            carbRatio,
+            4,
+            10,
+            false,
+            15,
+            30,
+            unwell,
+          );
+          setResult(result);
+        }}
+      >
+        Calculate!
+      </button>
+      {result ? <output>{result}</output> : null}
     </div>
   );
 }
