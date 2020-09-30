@@ -94,7 +94,7 @@ export default function Calculator() {
 }
 
 export function Switch({ isOn, handleToggle }) {
-  const [state, setState] = React.useState(true);
+  const [unitSwitch, setUnitSwitch] = React.useState(true);
 
   return (
     <>
