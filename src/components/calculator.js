@@ -13,7 +13,7 @@ export default function Calculator() {
   const [carbPortion, setCarbPortion] = React.useState('');
   const [insulinRatio, setInsulinRatio] = React.useState('');
   const [carbRatio, setCarbRatio] = React.useState('');
-
+  const [unitSwitch, setUnitSwitch] = React.useState(true);
   const [result, setResult] = React.useState('');
 
   const handleUnwellChange = () => {
@@ -94,8 +94,6 @@ export default function Calculator() {
 }
 
 export function Switch({ isOn, handleToggle }) {
-  const [unitSwitch, setUnitSwitch] = React.useState(true);
-
   return (
     <>
       <input
