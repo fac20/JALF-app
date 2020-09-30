@@ -32,6 +32,25 @@
     ]
   },
   "devDependencies": {
-    "cypress": "^5.2.0"
+    "babel-eslint": "^10.1.0",
+    "cypress": "^5.2.0",
+    "eslint": "^7.10.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-react": "^7.21.2",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.0",
+    "prettier": "^2.1.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "eslint",
+      "prettier --write"
+    ]
   }
 }

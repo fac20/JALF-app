@@ -1,9 +1,8 @@
-import React from "react";
-import "./App.css";
-import Landing from "./Landing.js";
-import Login from "./LogIn.js";
-
-import Calculator from "./components/calculator.js"
+import React from 'react';
+import './App.css';
+import Landing from './Landing';
+import Login from './LogIn';
+import Calculator from './components/calculator';
 
 function App() {
   const [page, setPage] = React.useState(window.location.pathname);
@@ -19,16 +18,16 @@ function App() {
     const onHistoryChange = () => {
       setPage(window.location.pathname);
     };
-    window.addEventListener("popstate", onHistoryChange);
-    return () => window.removeEventListener("popstate", onHistoryChange);
+    window.addEventListener('popstate', onHistoryChange);
+    return () => window.removeEventListener('popstate', onHistoryChange);
   }, []);
 
   return (
     <main>
-      {page === "/" && <Landing setPage={setPage} navigate={navigate} />}
-      {page === "/login" && <Login />}
+      {page === '/' && <Landing setPage={setPage} navigate={navigate} />}
+      {page === '/login' && <Login />}
       {/* {page === "/signup" && <Signup />} */}
-      {page === "/calculate" && <Calculator />}
+      {page === '/calculate' && <Calculator />}
     </main>
   );
 }
