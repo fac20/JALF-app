@@ -1,0 +1,17 @@
+version: 2.1
+orbs:
+    node: circleci/node@3.0.0
+    codecov: codecov/codecov@1.0.2
+jobs:
+    build:
+        docker: 
+          - image: circleci/node:10-browsers ## makes virtual environment 
+        steps:
+            - checkout
+            - run: npm i ## installs packages for circleCI 
+            - run:
+                name: run tests and generate coverage
+                command: npm run cov
+            - codecov/upload:
+                file: './coverage/clover.xml'
+                token: 9c2682a1-17f6-4ef0-a3bf-083dcb1f39fb ## token is essential 
