@@ -8,10 +8,10 @@ function Landing({ setPage, navigate }) {
         <a href="/login" onClick={navigate}>
           Login
         </a>
-        <a href="/signup" onClick={navigate}>
+        <a href="/signup" onClick={navigate} >
           Signup
         </a>
-        <a href="/calculate" onClick={navigate}>
+        <a href="/calculator" onClick={navigate}>
           Calculate
         </a>
       </nav>

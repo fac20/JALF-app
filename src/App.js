@@ -25,9 +25,9 @@ function App() {
   return (
     <main>
       {page === '/' && <Landing setPage={setPage} navigate={navigate} />}
-      {page === '/login' && <Login />}
+      {page === '/login' && <Login setPage={setPage} navigate={navigate} />}
       {/* {page === "/signup" && <Signup />} */}
-      {page === '/calculate' && <Calculator />}
+      {page === '/calculator' && <Calculator setPage={setPage} navigate={navigate} />}
     </main>
   );
 }
