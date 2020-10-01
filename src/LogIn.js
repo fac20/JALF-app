@@ -1,12 +1,12 @@
 import React from "react";
 
-function LogIn() {
+function LogIn({ setPage, navigate }) {
   return (
     <div>
       {/* <BackButton /> */}
       {/* Image placeholder */}
       <form>
-        <label for="email" value="Email:"></label>
+        <label htmlFor="email" value="Email:"></label>
         <input
           type="email"
           id="email"
@@ -14,9 +14,16 @@ function LogIn() {
           placeholder="hi@there.com"
         ></input>
 
-        <label for="password" value="Password:"></label>
+        <label htmlFor="password" value="Password:"></label>
         <input type="password" id="password" name="password"></input>
-        <input type="submit" value="Log In"></input>
+        {/* <a href="/home" onClick={navigate}>Home */}
+          <input type="submit" value="Log In" onClick={(event) => {
+            event.preventDefault();
+            window.location = '/home';
+            navigate();
+          }}>
+          </input>
+        {/* </a> */}
       </form>
     </div>
   );
