@@ -33,6 +33,7 @@ function App() {
       {page === '/calculator' && <Calculator setPage={setPage} navigate={navigate} />}
       {page === '/home' && <Home setPage={setPage} navigate={navigate} />}
       {page === '/eatOut' && <EatOut setPage={setPage} navigate={navigate} />}
+      {page === './myProfile' && <Profile setPage={setPage} navigate={navigate} />}
     </main>
   );
 }
