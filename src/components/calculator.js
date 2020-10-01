@@ -49,17 +49,18 @@ const Container2 = styled.div`
   align-items: center;
 `;
 
-export default function Calculator() {
+export default function Calculator({ eatOutCarbs }) {
   const [value, setValue] = React.useState(false);
   const [unwell, setUnwell] = React.useState(false);
   const [exercise, setExercise] = React.useState(false);
   const [period, setPeriod] = React.useState(false);
 
   const [bloodGlucose, setBloodGlucose] = React.useState('');
-  const [carbPortion, setCarbPortion] = React.useState('');
+  const [carbPortion, setCarbPortion] = React.useState(eatOutCarbs || '');
   const [insulinRatio, setInsulinRatio] = React.useState('');
   const [carbRatio, setCarbRatio] = React.useState('');
   const [result, setResult] = React.useState('');
+  const [unitSwitch, setUnitSwitch] = React.useState('');
 
   const handleUnwellChange = () => {
     setUnwell(!unwell);
@@ -84,7 +85,13 @@ export default function Calculator() {
               state={bloodGlucose}
             />
           </Container2>
-          <InputBox label='Carbohydrate (g)' setStateFunction={setCarbPortion} />
+          <label htmlFor='carbPortion'></label>
+          {/* <input id='carbPortion' type='text' value={carbPortion} ></input> */}
+          <InputBox
+            label='Carbohydrate (g)'
+            setStateFunction={setCarbPortion}
+            initialValue={carbPortion}
+          />
           <Container2>
             <InputBox label='Ratio' placeholder='units' setStateFunction={setInsulinRatio} />
             <span>:</span>
