@@ -5,22 +5,22 @@ function Home({ setPage, navigate }) {
     <div>
       {/* Placheholder for image   */}
       <nav>
-        <a href="/myProfile" onClick={navigate}>
+        <a href='/myProfile' onClick={navigate}>
           <button>My Profile </button>
         </a>
-        <a href="/eatOut" onClick={navigate}>
+        <a href='/eatOut' onClick={navigate}>
           Eat Out
         </a>
-        <a href="/eatIn" onClick={navigate}>
+        <a href='/eatIn' onClick={navigate}>
           Eat In
         </a>
-        <a href="/appTutorial" onClick={navigate}>
+        <a href='/appTutorial' onClick={navigate}>
           App Tutorial
         </a>
-        <a href="/resources" onClick={navigate}>
+        <a href='/resources' onClick={navigate}>
           Resources
         </a>
-        <a href="/calculator" onClick={navigate}>
+        <a href='/calculator' onClick={navigate}>
           Calculator
         </a>
       </nav>

@@ -14,22 +14,22 @@ function SignUp({ setPage, navigate }) {
       {/* Image placeholder */}
       <form>
         <InputBox
-          type="email"
-          label="email"
-          placeholder="hi@there.com"
+          type='email'
+          label='email'
+          placeholder='hi@there.com'
           setStateFunction={setEmail}
         />
 
-        <InputBox type="password" label="password" setStateFunction={setPassword} />
-        <InputBox type="password" label="confirmPassword" setStateFunction={setConfirmPassword} />
+        <InputBox type='password' label='password' setStateFunction={setPassword} />
+        <InputBox type='password' label='confirmPassword' setStateFunction={setConfirmPassword} />
 
-        <InputBox label="Ratio" placeholder="units" setStateFunction={setInsulinRatio} />
+        <InputBox label='Ratio' placeholder='units' setStateFunction={setInsulinRatio} />
         <span>:</span>
-        <InputBox placeholder="carbohydrates" setStateFunction={setCarbRatio} />
+        <InputBox placeholder='carbohydrates' setStateFunction={setCarbRatio} />
 
         <input
-          type="submit"
-          value="Log In"
+          type='submit'
+          value='Log In'
           onClick={(event) => {
             event.preventDefault();
             window.location = '/home';

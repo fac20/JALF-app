@@ -11,16 +11,16 @@ function LogIn({ setPage, navigate }) {
       {/* Image placeholder */}
       <form>
         <InputBox
-          type="email"
-          label="email"
-          placeholder="hi@there.com"
+          type='email'
+          label='email'
+          placeholder='hi@there.com'
           setStateFunction={setEmail}
         />
-        <InputBox type="password" label="password" setStateFunction={setPassword} />
+        <InputBox type='password' label='password' setStateFunction={setPassword} />
 
         <input
-          type="submit"
-          value="Log In"
+          type='submit'
+          value='Log In'
           onClick={(event) => {
             event.preventDefault();
             window.location = '/home';
