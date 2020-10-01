@@ -10,12 +10,15 @@ function EatOut() {
   }
 
   const uniqueCategories = categories.filter(onlyUnique);
-  console.log(uniqueCategories);
+
+  const [category, setCategory] = React.useState('Soups');
+  const [totalCarbs, setTotalCarbs] = React.useState(0);
 
   return (
     <>
       <h1>Eat Out</h1>
-      <select>
+      <label htmlFor='categories'>Search by category:</label>
+      <select id='categories' onChange={(event) => setCategory(event.target.value)}>
         {uniqueCategories.map((category, index) => {
           return (
             <option key={index} value={category}>
@@ -24,6 +27,23 @@ function EatOut() {
           );
         })}
       </select>
+      <ul>
+        {data.map((x) => {
+          return x.category.category === category ? (
+            <li>
+              Dish: {x.item}, Carbs: {x.carbs || 'N/A'}
+              <button
+                onClick={() => setTotalCarbs((totalCarbs) => totalCarbs + parseFloat(x.carbs))}
+              >
+                {' '}
+                Add{' '}
+              </button>
+            </li>
+          ) : null;
+        })}
+      </ul>
+
+      <p>{Math.round(totalCarbs * 10) / 10}g</p>
     </>
   );
 }
