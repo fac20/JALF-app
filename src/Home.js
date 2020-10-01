@@ -6,7 +6,7 @@ function Home({ setPage, navigate }) {
       {/* Placheholder for image   */}
       <nav>
         <a href='/myProfile' onClick={navigate}>
-          <button>My Profile </button>
+          My Profile
         </a>
         <a href='/eatOut' onClick={navigate}>
           Eat Out
