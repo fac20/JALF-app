@@ -10,6 +10,7 @@ import Profile from './Profile';
 
 function App() {
   const [page, setPage] = React.useState(window.location.pathname);
+  const [eatOutCarbs, setEatOutCarbs] = React.useState(0);
 
   const navigate = (event) => {
     event.preventDefault();
@@ -30,9 +31,18 @@ function App() {
     <main>
       {page === '/login' && <Login setPage={setPage} navigate={navigate} />}
       {page === '/signup' && <Signup />}
-      {page === '/calculator' && <Calculator setPage={setPage} navigate={navigate} />}
+      {page === '/calculator' && (
+        <Calculator setPage={setPage} navigate={navigate} eatOutCarbs={eatOutCarbs} />
+      )}
       {page === '/home' && <Home setPage={setPage} navigate={navigate} />}
-      {page === '/eatOut' && <EatOut setPage={setPage} navigate={navigate} />}
+      {page === '/eatOut' && (
+        <EatOut
+          setPage={setPage}
+          navigate={navigate}
+          eatOutCarbs={eatOutCarbs}
+          setEatOutCarbs={setEatOutCarbs}
+        />
+      )}
       {page === '/myProfile' && <Profile setPage={setPage} navigate={navigate} />}
       {page === '/' && <Landing setPage={setPage} navigate={navigate} />}
     </main>
