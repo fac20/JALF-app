@@ -9,7 +9,6 @@ export default function Calculator() {
   const [exercise, setExercise] = React.useState(false);
   const [period, setPeriod] = React.useState(false);
 
-  
   const [bloodGlucose, setBloodGlucose] = React.useState('');
   const [carbPortion, setCarbPortion] = React.useState('');
   const [insulinRatio, setInsulinRatio] = React.useState('');
