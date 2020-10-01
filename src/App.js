@@ -2,8 +2,9 @@ import React from 'react';
 import './App.css';
 import Landing from './Landing';
 import Login from './LogIn';
+import Signup from './SignUp';
 import Calculator from './components/calculator';
-import Home from './Home'
+import Home from './Home';
 
 function App() {
   const [page, setPage] = React.useState(window.location.pathname);
@@ -27,9 +28,9 @@ function App() {
     <main>
       {page === '/' && <Landing setPage={setPage} navigate={navigate} />}
       {page === '/login' && <Login setPage={setPage} navigate={navigate} />}
-      {/* {page === "/signup" && <Signup />} */}
+      {page === '/signup' && <Signup />}
       {page === '/calculator' && <Calculator setPage={setPage} navigate={navigate} />}
-      {page === '/home' && <Home setPage={setPage} navigate={navigate}/>}
+      {page === '/home' && <Home setPage={setPage} navigate={navigate} />}
     </main>
   );
 }

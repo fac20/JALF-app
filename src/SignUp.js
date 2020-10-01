@@ -1,9 +1,12 @@
 import React from 'react';
 import { InputBox } from './components/formComponents';
 
-function LogIn({ setPage, navigate }) {
+function SignUp({ setPage, navigate }) {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [confirmPassword, setConfirmPassword] = React.useState('');
+  const [insulinRatio, setInsulinRatio] = React.useState('');
+  const [carbRatio, setCarbRatio] = React.useState('');
 
   return (
     <div>
@@ -16,7 +19,13 @@ function LogIn({ setPage, navigate }) {
           placeholder="hi@there.com"
           setStateFunction={setEmail}
         />
+
         <InputBox type="password" label="password" setStateFunction={setPassword} />
+        <InputBox type="password" label="confirmPassword" setStateFunction={setConfirmPassword} />
+
+        <InputBox label="Ratio" placeholder="units" setStateFunction={setInsulinRatio} />
+        <span>:</span>
+        <InputBox placeholder="carbohydrates" setStateFunction={setCarbRatio} />
 
         <input
           type="submit"
@@ -32,4 +41,4 @@ function LogIn({ setPage, navigate }) {
   );
 }
 
-export default LogIn;
+export default SignUp;
