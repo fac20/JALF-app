@@ -2,7 +2,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: aquamarine;
 
   /* background: linear-gradient(#acebe2, #1ea0be); */
 }
