@@ -19,13 +19,9 @@ $pretty--z-index-front: 2;
 $pretty--debug: false;
 $pretty--dev-err: 'Invalid input type';
 
-/* REQUIRED */
 @import '~pretty-checkbox/src/scss/variables';
-// @import 'variables';
-
 @import '~pretty-checkbox/src/scss/core';
 
-/* OPTIONALS */
 @import '~pretty-checkbox/src/scss/elements/default/fill';
 @import '~pretty-checkbox/src/scss/elements/default/outline';
 @import '~pretty-checkbox/src/scss/elements/default/thick';
