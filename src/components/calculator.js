@@ -1,7 +1,53 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import './toggle.css';
 import { InputBox } from './formComponents';
 import Calculate from '../utils/calculate';
+import styled from 'styled-components';
+import { Checkbox } from 'pretty-checkbox-react';
+import './styles.scss';
+import './calculator.css';
+
+// --------------------Styled components---------------------
+
+const Button = styled.button`
+  font-size: 35px;
+  padding: 1rem;
+  border-radius: 20px;
+  box-shadow: 3px 3px 1px #223a70;
+  background: #1ea0be;
+  color: white;
+`;
+
+const Fieldset = styled.fieldset`
+  border: 9px solid #1ea0be;
+  background: #acebe2;
+  padding: 2rem;
+  margin: 2rem;
+  border-radius: 20px;
+`;
+
+const Label = styled.label`
+  color: #223a70;
+`;
+
+const Container = styled.div`
+  border: 9px solid #ffc7cd;
+  border-radius: 20px;
+  box-shadow: 10px 10px 5px #223a70;
+  padding: 6rem;
+  margin: 3rem;
+  background: #ffc7cd;
+  margin: 4rem;
+  text-align: center;
+`;
+
+const Container2 = styled.div`
+  padding: 10px;
+  margin: auto;
+  margin: 2rem;
+  align-items: center;
+`;
 
 export default function Calculator() {
   const [value, setValue] = React.useState(false);
@@ -13,7 +59,6 @@ export default function Calculator() {
   const [carbPortion, setCarbPortion] = React.useState('');
   const [insulinRatio, setInsulinRatio] = React.useState('');
   const [carbRatio, setCarbRatio] = React.useState('');
-  const [unitSwitch, setUnitSwitch] = React.useState(true);
   const [result, setResult] = React.useState('');
 
   const handleUnwellChange = () => {
@@ -28,88 +73,114 @@ export default function Calculator() {
   };
 
   return (
-    <div className='calculator'>
-      <InputBox
-        label='Blood Glucose Level'
-        setStateFunction={setBloodGlucose}
-        state={bloodGlucose}
-      />
-      <InputBox label='Carbohydrate Portions' setStateFunction={setCarbPortion} />
+    <>
+      <Switch isOn={unitSwitch} handleToggle={() => setUnitSwitch(!unitSwitch)} />
+      <Container>
+        <div className='calculator'>
+          <Container2>
+            <InputBox
+              label='Blood Glucose Level'
+              setStateFunction={setBloodGlucose}
+              state={bloodGlucose}
+            />
+          </Container2>
+          <InputBox label='Carbohydrate (g)' setStateFunction={setCarbPortion} />
+          <Container2>
+            <InputBox label='Ratio' placeholder='units' setStateFunction={setInsulinRatio} />
+            <span>:</span>
+            <InputBox placeholder='carbohydrates' setStateFunction={setCarbRatio} />
+            <span>g</span>
+          </Container2>
+          <Fieldset>
+            <Checkbox
+              animation='smooth'
+              shape='curve'
+              color='primary-o'
+              name='health'
+              onChange={handleUnwellChange}
+            >
+              Feeling unwell?
+            </Checkbox>
 
-      <InputBox label='Ratio' placeholder='units' setStateFunction={setInsulinRatio} />
-      <span>:</span>
-      <InputBox placeholder='carbohydrates' setStateFunction={setCarbRatio} />
-      <span>g</span>
-      <fieldset>
-        <label for='health'>Feeling unwell?</label>
-        <input type='checkbox' id='health' name='health' onChange={handleUnwellChange}></input>
+            <Checkbox
+              animation='smooth'
+              shape='curve'
+              color='primary-o'
+              name='exercise'
+              onChange={handleExerciseChange}
+            >
+              Exercise?
+            </Checkbox>
+            {exercise ? (
+              <div>
+                <InputBox label='Duration (mins)?' />
+                <label htmlFor='intensity'>Intensity?</label>
+                <select name='intensity' id='intensity'>
+                  <option value='low'>Low</option>
+                  <option value='mid'>Mid</option>
+                  <option value='high'>High</option>
+                </select>
+              </div>
+            ) : null}
 
-        <label for='exercise'>Exercise?</label>
-        <input
-          type='checkbox'
-          id='exercise'
-          name='exercise'
-          onChange={handleExerciseChange}
-        ></input>
-        {exercise ? (
-          <div>
-            <InputBox label='Duration (mins)?' />
-            <label htmlFor='intensity'>Intensity?</label>
-            <select name='intensity' id='intensity'>
-              <option value='low'>Low</option>
-              <option value='mid'>Mid</option>
-              <option value='high'>High</option>
-            </select>
-          </div>
-        ) : null}
-        <label for='period'>Period?</label>
-        <input type='checkbox' id='period' name='period' onChange={handlePeriodChange}></input>
-      </fieldset>
-      <div className='toggle'>
-        <Switch isOn={unitSwitch} handleToggle={() => setUnitSwitch(!unitSwitch)} />
-      </div>
-      <button
-        type='submit'
-        onClick={() => {
-          const result = Calculate(
-            bloodGlucose,
-            carbPortion,
-            insulinRatio,
-            carbRatio,
-            4,
-            10,
-            false,
-            15,
-            30,
-            unwell,
-          );
-          setResult(result);
-        }}
-      >
-        Calculate!
-      </button>
-      {result ? <output>{result}</output> : null}
-    </div>
+            <Checkbox
+              animation='smooth'
+              shape='curve'
+              color='primary-o'
+              name='period'
+              onChange={handlePeriodChange}
+            >
+              Period?
+            </Checkbox>
+          </Fieldset>
+          <div className='toggle'></div>
+          <Button
+            type='submit'
+            onClick={() => {
+              const result = Calculate(
+                bloodGlucose,
+                carbPortion,
+                insulinRatio,
+                carbRatio,
+                4,
+                10,
+                false,
+                15,
+                30,
+                unwell,
+              );
+              setResult(result);
+            }}
+          >
+            Calculate!
+          </Button>
+
+          {result ? <output>{result}</output> : null}
+        </div>
+      </Container>
+    </>
   );
 }
 
 export function Switch({ isOn, handleToggle }) {
   return (
     <>
-      <input
-        checked={isOn}
-        onChange={handleToggle}
-        className='react-switch-checkbox'
-        id={`react-switch-new`}
-        type='checkbox'
-      />
-      <label
-        style={{ background: isOn && 'hsl(38, 100%, 48%)' }}
-        className='react-switch-label'
-        htmlFor={`react-switch-new`}
-      >
-        <span className={`react-switch-button`} />
-      </label>
+      <Container2>
+        <input
+          checked={isOn}
+          onChange={handleToggle}
+          className='react-switch-checkbox'
+          id={`react-switch-new`}
+          type='checkbox'
+        />
+        <label
+          style={{ background: isOn && '#FFC7CD' }}
+          className='react-switch-label'
+          htmlFor={`react-switch-new`}
+        >
+          <span className={`react-switch-button`} />
+        </label>
+      </Container2>
     </>
   );
 }
