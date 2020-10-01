@@ -4,6 +4,17 @@ App to help diabetics calculate the insulin doses they need to take according to
 
 Wireframe on figma : [SugarWizard](https://www.figma.com/proto/w2fxw1lje9uoNzIYEzY9mr/The-Diabetics-App?node-id=8%3A2&viewport=676%2C243%2C0.12175041437149048&scaling=scale-down)
 
+### The problem we'd like to solve
+Many diabetics, both type 1 and 2) struggle with calculating how much medication to take with meals. The ratio of carbohydrate portion (CP) to insulin units varies from person to person and we have to do many calculations throughout the day to workout how much medication to take. Some people really struggle with the maths of this and get the dosage wrong.
+
+'As a diabetic who struggles with their medication, I would like an app to help me easily calculate how much insulin I need for specific meals (basal bolus regime), so that I can safely administer the correct dosage and reduce the number of dangerous hypoglycaemic episodes and improve my HbA1c'
+
+### Who are the stakeholders?
+People with type 1 (and type 2 diabetes)
+
+### What is currently being done to solve this problem?
+There are online insulin calculators available and also online databases for food, but nothing combined. A lot of people don't want to use multiple apps for this and so most end up doing guess work.
+
                                                           -----------------------------------------
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
