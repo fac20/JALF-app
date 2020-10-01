@@ -12,7 +12,20 @@ function EatOut() {
   const uniqueCategories = categories.filter(onlyUnique);
   console.log(uniqueCategories);
 
-  return <select></select>;
+  return (
+    <>
+      <h1>Eat Out</h1>
+      <select>
+        {uniqueCategories.map((category, index) => {
+          return (
+            <option key={index} value={category}>
+              {category}
+            </option>
+          );
+        })}
+      </select>
+    </>
+  );
 }
 
 export default EatOut;
