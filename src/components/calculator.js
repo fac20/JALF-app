@@ -8,7 +8,6 @@ export default function Calculator() {
   const [unwell, setUnwell] = React.useState(false);
   const [exercise, setExercise] = React.useState(false);
   const [period, setPeriod] = React.useState(false);
-  const [unitSwitch, setUnitSwitch] = React.useState(true);
 
   const [bloodGlucose, setBloodGlucose] = React.useState('');
   const [carbPortion, setCarbPortion] = React.useState('');
@@ -29,48 +28,48 @@ export default function Calculator() {
   };
 
   return (
-    <div className="calculator">
+    <div className='calculator'>
       <InputBox
-        label="Blood Glucose Level"
+        label='Blood Glucose Level'
         setStateFunction={setBloodGlucose}
         state={bloodGlucose}
       />
-      <InputBox label="Carbohydrate Portions" setStateFunction={setCarbPortion} />
+      <InputBox label='Carbohydrate Portions' setStateFunction={setCarbPortion} />
 
-      <InputBox label="Ratio" placeholder="units" setStateFunction={setInsulinRatio} />
+      <InputBox label='Ratio' placeholder='units' setStateFunction={setInsulinRatio} />
       <span>:</span>
-      <InputBox placeholder="carbohydrates" setStateFunction={setCarbRatio} />
+      <InputBox placeholder='carbohydrates' setStateFunction={setCarbRatio} />
       <span>g</span>
       <fieldset>
-        <label for="health">Feeling unwell?</label>
-        <input type="checkbox" id="health" name="health" onChange={handleUnwellChange}></input>
+        <label for='health'>Feeling unwell?</label>
+        <input type='checkbox' id='health' name='health' onChange={handleUnwellChange}></input>
 
-        <label for="exercise">Exercise?</label>
+        <label for='exercise'>Exercise?</label>
         <input
-          type="checkbox"
-          id="exercise"
-          name="exercise"
+          type='checkbox'
+          id='exercise'
+          name='exercise'
           onChange={handleExerciseChange}
         ></input>
         {exercise ? (
           <div>
-            <InputBox label="Duration (mins)?" />
-            <label htmlFor="intensity">Intensity?</label>
-            <select name="intensity" id="intensity">
-              <option value="low">Low</option>
-              <option value="mid">Mid</option>
-              <option value="high">High</option>
+            <InputBox label='Duration (mins)?' />
+            <label htmlFor='intensity'>Intensity?</label>
+            <select name='intensity' id='intensity'>
+              <option value='low'>Low</option>
+              <option value='mid'>Mid</option>
+              <option value='high'>High</option>
             </select>
           </div>
         ) : null}
-        <label for="period">Period?</label>
-        <input type="checkbox" id="period" name="period" onChange={handlePeriodChange}></input>
+        <label for='period'>Period?</label>
+        <input type='checkbox' id='period' name='period' onChange={handlePeriodChange}></input>
       </fieldset>
-      <div className="toggle">
+      <div className='toggle'>
         <Switch isOn={unitSwitch} handleToggle={() => setUnitSwitch(!unitSwitch)} />
       </div>
       <button
-        type="submit"
+        type='submit'
         onClick={() => {
           const result = Calculate(
             bloodGlucose,
@@ -100,13 +99,13 @@ export function Switch({ isOn, handleToggle }) {
       <input
         checked={isOn}
         onChange={handleToggle}
-        className="react-switch-checkbox"
+        className='react-switch-checkbox'
         id={`react-switch-new`}
-        type="checkbox"
+        type='checkbox'
       />
       <label
         style={{ background: isOn && 'hsl(38, 100%, 48%)' }}
-        className="react-switch-label"
+        className='react-switch-label'
         htmlFor={`react-switch-new`}
       >
         <span className={`react-switch-button`} />
