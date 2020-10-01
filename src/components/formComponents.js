@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-export function InputBox({ label, placeholder, setStateFunction, state, type }) {
-  const [input, setInput] = React.useState('');
+export function InputBox({ label, placeholder, setStateFunction, state, type, initialValue }) {
+  const [input, setInput] = React.useState(initialValue || '');
 
   const handleInputChange = (event) => {
     setInput(event.target.value);
