@@ -1,4 +1,4 @@
-[
+const data = [
   {
     category: { url: '/en-GB/products/categories/soups', category: 'Soups' },
     item: 'Chicken Laksa Side Soup',
@@ -1362,3 +1362,5 @@
     url: '/en-GB/products/UK008135/prets-organic-single-origin-peruvian-ground-coffee-500g',
   },
 ];
+
+export default data;

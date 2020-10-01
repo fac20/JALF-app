@@ -5,6 +5,7 @@ import Login from './LogIn';
 import Signup from './SignUp';
 import Calculator from './components/calculator';
 import Home from './Home';
+import EatOut from './EatOut';
 
 function App() {
   const [page, setPage] = React.useState(window.location.pathname);
@@ -31,6 +32,7 @@ function App() {
       {page === '/signup' && <Signup />}
       {page === '/calculator' && <Calculator setPage={setPage} navigate={navigate} />}
       {page === '/home' && <Home setPage={setPage} navigate={navigate} />}
+      {page === '/eatOut' && <EatOut setPage={setPage} navigate={navigate} />}
     </main>
   );
 }
