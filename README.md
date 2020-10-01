@@ -4,6 +4,8 @@ App to help diabetics calculate the insulin doses they need to take according to
 
 Wireframe on figma : [SugarWizard](https://www.figma.com/proto/w2fxw1lje9uoNzIYEzY9mr/The-Diabetics-App?node-id=8%3A2&viewport=676%2C243%2C0.12175041437149048&scaling=scale-down)
 
+                                                          -----------------------------------------
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
