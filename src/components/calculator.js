@@ -54,13 +54,13 @@ export default function Calculator({ eatOutCarbs }) {
   const [unwell, setUnwell] = React.useState(false);
   const [exercise, setExercise] = React.useState(false);
   const [period, setPeriod] = React.useState(false);
+  const [unitSwitch, setUnitSwitch] = React.useState(true);
 
   const [bloodGlucose, setBloodGlucose] = React.useState('');
   const [carbPortion, setCarbPortion] = React.useState(eatOutCarbs || '');
   const [insulinRatio, setInsulinRatio] = React.useState('');
   const [carbRatio, setCarbRatio] = React.useState('');
   const [result, setResult] = React.useState('');
-  const [unitSwitch, setUnitSwitch] = React.useState('');
 
   const handleUnwellChange = () => {
     setUnwell(!unwell);
