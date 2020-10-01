@@ -6,6 +6,7 @@ import Signup from './SignUp';
 import Calculator from './components/calculator';
 import Home from './Home';
 import EatOut from './EatOut';
+import Profile from './Profile';
 
 function App() {
   const [page, setPage] = React.useState(window.location.pathname);
@@ -27,12 +28,13 @@ function App() {
 
   return (
     <main>
-      {page === '/' && <Landing setPage={setPage} navigate={navigate} />}
       {page === '/login' && <Login setPage={setPage} navigate={navigate} />}
       {page === '/signup' && <Signup />}
       {page === '/calculator' && <Calculator setPage={setPage} navigate={navigate} />}
       {page === '/home' && <Home setPage={setPage} navigate={navigate} />}
       {page === '/eatOut' && <EatOut setPage={setPage} navigate={navigate} />}
+      {page === '/myProfile' && <Profile setPage={setPage} navigate={navigate} />}
+      {page === '/' && <Landing setPage={setPage} navigate={navigate} />}
     </main>
   );
 }
