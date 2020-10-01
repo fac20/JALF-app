@@ -54,7 +54,6 @@ export default function Calculator() {
   const [unwell, setUnwell] = React.useState(false);
   const [exercise, setExercise] = React.useState(false);
   const [period, setPeriod] = React.useState(false);
-  const [unitSwitch, setUnitSwitch] = React.useState(true);
 
   const [bloodGlucose, setBloodGlucose] = React.useState('');
   const [carbPortion, setCarbPortion] = React.useState('');
@@ -77,66 +76,66 @@ export default function Calculator() {
     <>
       <Switch isOn={unitSwitch} handleToggle={() => setUnitSwitch(!unitSwitch)} />
       <Container>
-        <div className="calculator">
+        <div className='calculator'>
           <Container2>
             <InputBox
-              label="Blood Glucose Level"
+              label='Blood Glucose Level'
               setStateFunction={setBloodGlucose}
               state={bloodGlucose}
             />
           </Container2>
-          <InputBox label="Carbohydrate (g)" setStateFunction={setCarbPortion} />
+          <InputBox label='Carbohydrate (g)' setStateFunction={setCarbPortion} />
           <Container2>
-            <InputBox label="Ratio" placeholder="units" setStateFunction={setInsulinRatio} />
+            <InputBox label='Ratio' placeholder='units' setStateFunction={setInsulinRatio} />
             <span>:</span>
-            <InputBox placeholder="carbohydrates" setStateFunction={setCarbRatio} />
+            <InputBox placeholder='carbohydrates' setStateFunction={setCarbRatio} />
             <span>g</span>
           </Container2>
           <Fieldset>
             <Checkbox
-              animation="smooth"
-              shape="curve"
-              color="primary-o"
-              name="health"
+              animation='smooth'
+              shape='curve'
+              color='primary-o'
+              name='health'
               onChange={handleUnwellChange}
             >
               Feeling unwell?
             </Checkbox>
 
             <Checkbox
-              animation="smooth"
-              shape="curve"
-              color="primary-o"
-              name="exercise"
+              animation='smooth'
+              shape='curve'
+              color='primary-o'
+              name='exercise'
               onChange={handleExerciseChange}
             >
               Exercise?
             </Checkbox>
             {exercise ? (
               <div>
-                <InputBox label="Duration (mins)?" />
-                <label htmlFor="intensity">Intensity?</label>
-                <select name="intensity" id="intensity">
-                  <option value="low">Low</option>
-                  <option value="mid">Mid</option>
-                  <option value="high">High</option>
+                <InputBox label='Duration (mins)?' />
+                <label htmlFor='intensity'>Intensity?</label>
+                <select name='intensity' id='intensity'>
+                  <option value='low'>Low</option>
+                  <option value='mid'>Mid</option>
+                  <option value='high'>High</option>
                 </select>
               </div>
             ) : null}
 
             <Checkbox
-              animation="smooth"
-              shape="curve"
-              color="primary-o"
-              name="period"
+              animation='smooth'
+              shape='curve'
+              color='primary-o'
+              name='period'
               onChange={handlePeriodChange}
             >
               Period?
             </Checkbox>
           </Fieldset>
-          <div className="toggle"></div>
+          <div className='toggle'></div>
           <Button
-            type="submit"
+            type='submit'
             onClick={() => {
               const result = Calculate(
                 bloodGlucose,
@@ -170,13 +169,13 @@ export function Switch({ isOn, handleToggle }) {
         <input
           checked={isOn}
           onChange={handleToggle}
-          className="react-switch-checkbox"
+          className='react-switch-checkbox'
           id={`react-switch-new`}
-          type="checkbox"
+          type='checkbox'
         />
         <label
           style={{ background: isOn && '#FFC7CD' }}
-          className="react-switch-label"
+          className='react-switch-label'
           htmlFor={`react-switch-new`}
         >
           <span className={`react-switch-button`} />
