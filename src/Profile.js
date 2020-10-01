@@ -12,12 +12,19 @@ highchartsMore(Highcharts);
 const options = {
   chart: {
     type: 'spline',
+    scrollablePlotArea: {
+      minWidth: 1000,
+      scrollPositionX: 1,
+    },
   },
   title: {
     text: 'Blood Glucose Level',
   },
   xAxis: {
     type: 'datetime',
+    labels: {
+      overflow: 'justify',
+    },
   },
   yAxis: {
     title: {
@@ -49,9 +56,11 @@ export default function Profile({ setPage, navigate }) {
   return (
     <>
       <h1>My Profile</h1>
-      <div id='chart'>
-        <HighchartsReact highcharts={Highcharts} options={options} />
-      </div>
+      <figure class='highcharts-figure'>
+        <div id='container'>
+          <HighchartsReact highcharts={Highcharts} options={options} />
+        </div>
+      </figure>
     </>
   );
 }
