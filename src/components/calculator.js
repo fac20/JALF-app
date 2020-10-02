@@ -53,6 +53,8 @@ export default function Calculator({ eatOutCarbs }) {
   const [value, setValue] = React.useState(false);
   const [unwell, setUnwell] = React.useState(false);
   const [exercise, setExercise] = React.useState(false);
+  const [duration, setDuration] = React.useState('');
+  const [intensity, setIntensity] = React.useState('low');
   const [period, setPeriod] = React.useState(false);
   const [unitSwitch, setUnitSwitch] = React.useState(true);
 
@@ -120,9 +122,13 @@ export default function Calculator({ eatOutCarbs }) {
             </Checkbox>
             {exercise ? (
               <div>
-                <InputBox label='Duration (mins)?' />
+                <InputBox label='Duration (mins)?' setStateFunction={setDuration} />
                 <label htmlFor='intensity'>Intensity?</label>
-                <select name='intensity' id='intensity'>
+                <select
+                  name='intensity'
+                  id='intensity'
+                  onChange={(event) => setIntensity(event.target.value)}
+                >
                   <option value='low'>Low</option>
                   <option value='mid'>Mid</option>
                   <option value='high'>High</option>
@@ -151,9 +157,9 @@ export default function Calculator({ eatOutCarbs }) {
                 carbRatio,
                 4,
                 10,
-                false,
-                15,
-                30,
+                exercise,
+                intensity,
+                duration,
                 unwell,
               );
               setResult(result);
@@ -161,7 +167,7 @@ export default function Calculator({ eatOutCarbs }) {
           >
             Calculate!
           </Button>
-
+          <p>Intensity: {intensity}</p>
           {result ? <output>{result}</output> : null}
         </div>
       </Container>

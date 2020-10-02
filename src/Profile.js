@@ -30,7 +30,6 @@ const options = {
       text: 'BGL (mmol/mL)',
     },
   },
-
   series: [
     {
       name: 'Blood Glucose Level',

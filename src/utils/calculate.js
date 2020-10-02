@@ -10,7 +10,7 @@ function Calculate(
   duration,
   unwell,
 ) {
-  //range = [4,10]
+  duration = parseFloat(duration);
   let ratio = parseFloat(carbRatio) / parseFloat(insulinRatio);
   let correctionDose = 0;
   if (parseFloat(bloodGlucose) > parseFloat(max)) {
@@ -29,12 +29,12 @@ function Calculate(
     } else if (intensity === 'low' && duration < 60) {
       totalUnits = totalUnits * 0.9;
       return totalUnits;
-    } else if (intensity === 'high' && duration > 60) {
+    } else if (intensity === 'high' && duration > 59) {
       totalUnits = totalUnits * 0.5; // double check numbers;
       return totalUnits;
-    } else if (intensity === 'med' && duration > 60) {
+    } else if (intensity === 'mid' && duration > 59) {
       return (totalUnits = totalUnits * 0.7);
-    } else if (intensity !== 'low' && duration > 30) {
+    } else if (intensity !== 'low' && duration > 29) {
       return (totalUnits = totalUnits * 0.8);
     }
   }
