@@ -1,13 +1,8 @@
 #container {
   height: 400px;
   width: 800px;
-  /* font-family: 'Courier New'; */
   font-family: Verdana, sans-serif;
 }
-/* body {
-  background-color: hsl(171, 61%, 80%);
-  font-family: font-family: 'Prata', serif;
-} */
 
 .highcharts-background {
   fill: aliceblue;
