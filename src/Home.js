@@ -14,7 +14,7 @@ function Home({ setPage, navigate }) {
       <nav>
         <Links>
           <a href='/myProfile' onClick={navigate}>
-            <button>My Profile </button>
+            My Profile
           </a>
         </Links>
         <Links>

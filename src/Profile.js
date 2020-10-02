@@ -1,12 +1,11 @@
 import React from 'react';
-import Highcharts from 'highcharts';
-
-import highchartsMore from 'highcharts/highcharts-more';
-
 import { render } from 'react-dom';
 import styled from 'styled-components';
-import HighchartsReact from 'highcharts-react-official';
 import './Profile.css';
+
+import Highcharts from 'highcharts';
+import highchartsMore from 'highcharts/highcharts-more';
+import HighchartsReact from 'highcharts-react-official';
 highchartsMore(Highcharts);
 
 const options = {
