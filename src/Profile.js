@@ -29,12 +29,14 @@ export default function Profile({ setPage, navigate }) {
 
   React.useEffect(() => {
     getData('http://localhost:3000/api/user/5f7b3daa99c0a30649607b10').then((res) => {
+      console.log(res);
       const glucose = res.data.glucose_reading;
       const time = res.data.time;
       const dataTimeArray = [];
       for (let i = 0; i < time.length; i++) {
         dataTimeArray.push([time[i], glucose[i]]); // why does data[0][0] come back undefined?
       }
+      console.log(dataTimeArray);
       setData(dataTimeArray);
     });
   }, []);
@@ -70,8 +72,8 @@ export default function Profile({ setPage, navigate }) {
       {
         name: 'Safe Range',
         data: [
-          [data[0], 5, 7],
-          [data[data.length - 1], 5, 7],
+          [5, 7],
+          [5, 7],
         ],
         type: 'arearange',
         lineWidth: 0,
