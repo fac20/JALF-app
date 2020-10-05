@@ -30,7 +30,7 @@ function Calculate(
       totalUnits = totalUnits * 0.9;
       return totalUnits;
     } else if (intensity === 'high' && duration > 60) {
-      totalUnits = totalUnits * 0.5; // double check numbers;
+      totalUnits = totalUnits * 0.5;
       return totalUnits;
     } else if (intensity === 'med' && duration > 60) {
       return (totalUnits = totalUnits * 0.7);
