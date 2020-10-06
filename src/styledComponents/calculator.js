@@ -15,8 +15,9 @@ export const Fieldset = styled.fieldset`
   border: 9px solid #1ea0be;
   background: #acebe2;
   padding: 2rem;
-  margin: 2rem;
+  margin: 1rem;
   border-radius: 20px;
+  font-family: 'Open Sans', sans-serif;
 `;
 
 // export const Label = styled.label`
@@ -27,11 +28,11 @@ export const Container = styled.div`
   border: 9px solid #ffc7cd;
   border-radius: 20px;
   box-shadow: 10px 10px 5px #223a70;
-  padding: 6rem;
-  margin: 3rem;
+  padding: 1rem;
+  margin: 6rem;
   background: #ffc7cd;
-  margin: 4rem;
   text-align: center;
+  font-family: 'Quicksand', sans-serif;
 `;
 
 export const Container2 = styled.div`
@@ -40,3 +41,9 @@ export const Container2 = styled.div`
   margin: 2rem;
   align-items: center;
 `;
+
+// export const StyledInputBox = styled.input`
+//   width: 8rem;
+//   height: 2rem;
+//   font-family: 'Quicksand', sans-serif;
+// `;
