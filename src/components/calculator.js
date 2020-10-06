@@ -9,10 +9,8 @@ import './styles.scss';
 import {
   Button,
   Fieldset,
-  Container,
-  Container2,
-  StyledInputBox,
   CalculatorContainer,
+  RatioContainer,
   Img,
 } from '../styledComponents/calculator';
 import Doctor from './doctor.png';
@@ -36,7 +34,6 @@ export default function Calculator({ eatOutCarbs }) {
   };
   const handleExerciseChange = () => {
     setExercise(!exercise);
-    // (exercise ? displayExerciseForm : null)
   };
   const handlePeriodChange = () => {
     setPeriod(!period);
@@ -46,28 +43,25 @@ export default function Calculator({ eatOutCarbs }) {
     <>
       {/* <Switch isOn={unitSwitch} handleToggle={() => setUnitSwitch(!unitSwitch)} /> */}
       <HomeButton />
-      <Container>
+      <CalculatorContainer>
         <Img src={Doctor} />
-        <Container2>
-          <InputBox
-            label='Blood Glucose Level'
-            setStateFunction={setBloodGlucose}
-            state={bloodGlucose}
-          />
-        </Container2>
-        <label htmlFor='carbPortion'></label>
-        {/* <input id='carbPortion' type='text' value={carbPortion} ></input> */}
+        <InputBox
+          label='Blood Glucose Level'
+          setStateFunction={setBloodGlucose}
+          state={bloodGlucose}
+        />
+
         <InputBox
           label='Carbohydrate (g)'
           setStateFunction={setCarbPortion}
           initialValue={carbPortion}
         />
-        <Container2>
+        <RatioContainer>
           <InputBox label='Ratio' placeholder='units' setStateFunction={setInsulinRatio} />
           <span>:</span>
           <InputBox placeholder='carbs' setStateFunction={setCarbRatio} />
           <span>g</span>
-        </Container2>
+        </RatioContainer>
         <Fieldset>
           <Checkbox
             animation='smooth'
@@ -133,7 +127,7 @@ export default function Calculator({ eatOutCarbs }) {
         </Button>
 
         {result ? <output>{result}</output> : null}
-      </Container>
+      </CalculatorContainer>
     </>
   );
 }
@@ -141,22 +135,20 @@ export default function Calculator({ eatOutCarbs }) {
 export function Switch({ isOn, handleToggle }) {
   return (
     <>
-      <Container2>
-        <input
-          checked={isOn}
-          onChange={handleToggle}
-          className='react-switch-checkbox'
-          id={`react-switch-new`}
-          type='checkbox'
-        />
-        <label
-          style={{ background: isOn && '#FFC7CD' }}
-          className='react-switch-label'
-          htmlFor={`react-switch-new`}
-        >
-          <span className={`react-switch-button`} />
-        </label>
-      </Container2>
+      <input
+        checked={isOn}
+        onChange={handleToggle}
+        className='react-switch-checkbox'
+        id={`react-switch-new`}
+        type='checkbox'
+      />
+      <label
+        style={{ background: isOn && '#FFC7CD' }}
+        className='react-switch-label'
+        htmlFor={`react-switch-new`}
+      >
+        <span className={`react-switch-button`} />
+      </label>
     </>
   );
 }

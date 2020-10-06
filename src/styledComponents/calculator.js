@@ -32,41 +32,27 @@ export const Img = styled.img`
   height: 15rem;
 `;
 
-export const Container = styled.div`
+export const CalculatorContainer = styled.div`
   width: 80vw;
+  height: 80vh;
   border: 9px solid #ffc7cd;
   border-radius: 20px;
   box-shadow: 10px 10px 5px #223a70;
   padding: 1rem;
-  margin: 6rem;
+  margin-top: 6rem;
   background: #ffc7cd;
   text-align: center;
   font-family: 'Quicksand', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
 `;
 
-export const Container2 = styled.div`
+export const RatioContainer = styled.div`
   width: 60vw;
-  padding: 10px;
-  margin: 2rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 `;
-
-export const CalculatorContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  @media screen and (max-width: 420px) {
-    display: flex;
-    flex-direction: column;
-  }
-`;
-
-// ^^ display input boxes below labels
-
-// export const StyledInputBox = styled.input
