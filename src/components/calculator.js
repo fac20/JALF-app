@@ -12,6 +12,8 @@ import {
   Container,
   Container2,
   StyledInputBox,
+  CalculatorContainer,
+  Img,
 } from '../styledComponents/calculator';
 import Doctor from './doctor.png';
 
@@ -44,8 +46,8 @@ export default function Calculator({ eatOutCarbs }) {
       {/* <Switch isOn={unitSwitch} handleToggle={() => setUnitSwitch(!unitSwitch)} /> */}
 
       <Container>
-        <img src={Doctor} />
-        <div className='calculator'>
+        <Img src={Doctor} />
+        <CalculatorContainer className='calculator'>
           <Container2>
             <InputBox
               label='Blood Glucose Level'
@@ -63,7 +65,7 @@ export default function Calculator({ eatOutCarbs }) {
           <Container2>
             <InputBox label='Ratio' placeholder='units' setStateFunction={setInsulinRatio} />
             <span>:</span>
-            <InputBox placeholder='carbohydrates' setStateFunction={setCarbRatio} />
+            <InputBox placeholder='carbs' setStateFunction={setCarbRatio} />
             <span>g</span>
           </Container2>
           <Fieldset>
@@ -131,7 +133,7 @@ export default function Calculator({ eatOutCarbs }) {
           </Button>
 
           {result ? <output>{result}</output> : null}
-        </div>
+        </CalculatorContainer>
       </Container>
     </>
   );

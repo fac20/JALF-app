@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Input } from '../styledComponents/calculator';
+import './formComponents.css';
 
 export function InputBox({ label, placeholder, setStateFunction, state, type, initialValue }) {
   const [input, setInput] = React.useState(initialValue || '');
@@ -10,16 +12,16 @@ export function InputBox({ label, placeholder, setStateFunction, state, type, in
   };
 
   return (
-    <>
+    <div className='input-container'>
       <label htmlFor={label}>{label}</label>
-      <input
+      <Input
         id={label}
         placeholder={placeholder}
         name={label || placeholder}
         type={type || 'text'}
         value={input}
         onChange={handleInputChange}
-      ></input>
-    </>
+      ></Input>
+    </div>
   );
 }
