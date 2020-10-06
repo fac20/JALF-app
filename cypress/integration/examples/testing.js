@@ -1,7 +1,4 @@
 describe('making sure cypress is working', () => {
-  it('fails the test with incorrect statements', () => {
-    expect(true).to.equal(false);
-  });
   it('passes the test with correct statements', () => {
     expect(true).to.equal(true);
   });
