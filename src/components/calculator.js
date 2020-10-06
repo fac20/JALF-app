@@ -15,6 +15,7 @@ import {
 } from '../styledComponents/calculator';
 import Doctor from './doctor.png';
 import HomeButton from './HomeButton';
+import addData from '../utils/addData';
 
 export default function Calculator({ eatOutCarbs }) {
   const [value, setValue] = React.useState(false);
@@ -124,6 +125,13 @@ export default function Calculator({ eatOutCarbs }) {
           }}
         >
           Calculate!
+        </Button>
+        <Button
+          onClick={() => {
+            addData('test', 'testemail', bloodGlucose);
+          }}
+        >
+          Store these entries
         </Button>
 
         {result ? <output>{result}</output> : null}
