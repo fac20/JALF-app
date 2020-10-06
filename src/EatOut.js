@@ -1,5 +1,6 @@
 import React from 'react';
 import data from './data';
+import HomeButton from './components/HomeButton';
 
 function EatOut({ setPage, navigate, eatOutCarbs, setEatOutCarbs }) {
   const categories = data.map((x) => x.category.category); // remove all fluff apart from categories
@@ -17,6 +18,7 @@ function EatOut({ setPage, navigate, eatOutCarbs, setEatOutCarbs }) {
 
   return (
     <>
+      <HomeButton />
       <h1>Eat Out</h1>
       <label htmlFor='categories'>Search by category:</label>
       <select id='categories' onChange={(event) => setCategory(event.target.value)}>
@@ -33,7 +35,7 @@ function EatOut({ setPage, navigate, eatOutCarbs, setEatOutCarbs }) {
           return x.category.category === category ? (
             <li>
               <h3> {x.item} </h3>
-              <p> Carbohydrate: {x.carbs + 'g' || 'N/A'} </p>
+              <p> Carbohydrates: {x.carbs + 'g' || 'N/A'} </p>
               <button
                 name={x.item}
                 onClick={(event) => {
