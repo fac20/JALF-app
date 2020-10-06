@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-// --------------------Styled components---------------------
-
 export const Button = styled.button`
   font-size: 35px;
   padding: 1rem;
@@ -17,6 +15,7 @@ export const Input = styled.input`
   border-radius: 10px;
   padding-top: 0.6rem;
   font-size: 1.5rem;
+  margin-left: 0.5rem;
 `;
 
 export const Fieldset = styled.fieldset`
@@ -29,12 +28,8 @@ export const Fieldset = styled.fieldset`
   font-family: 'Open Sans', sans-serif;
 `;
 
-// export const Label = styled.label`
-//   color: #223a70;
-// `;
-
 export const Img = styled.img`
-  height: 20rem;
+  height: 15rem;
 `;
 
 export const Container = styled.div`
@@ -47,6 +42,9 @@ export const Container = styled.div`
   background: #ffc7cd;
   text-align: center;
   font-family: 'Quicksand', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const Container2 = styled.div`
