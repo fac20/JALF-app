@@ -1,8 +1,12 @@
 version: 2.1
 orbs:
   cypress: cypress-io/cypress@1
+  codecov: codecov/codecov@1.0.1
+  node: circleci/node@3.0.0
 workflows:
   build:
     jobs:
       - cypress/run:
           record: true
+      - codecov/upload:
+          file: './coverage/clover.xml'
