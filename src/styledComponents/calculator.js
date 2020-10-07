@@ -63,7 +63,7 @@ export const CalculatorContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  @media screen and (max-width: 420px) {
+  @media screen and (max-width: 425px) {
     display: flex;
     flex-direction: column;
   }
