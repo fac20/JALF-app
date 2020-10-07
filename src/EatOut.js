@@ -3,8 +3,9 @@ import data from './data';
 import HomeButton from './components/HomeButton';
 import styled from 'styled-components';
 import './eatOut.css';
+import Dustbin from './dustbin.png';
 
-const HomeLink = styled.a`
+const CalculatorLink = styled.a`
   margin: auto;
   padding: 2rem;
   background-color: hsl(354, 100%, 89%);
@@ -13,6 +14,7 @@ const HomeLink = styled.a`
   border-radius: 20px;
   text-decoration: none;
   box-shadow: 5px 5px 5px #223a70;
+  margin-left: 25%;
 `;
 
 const Border = styled.div`
@@ -50,7 +52,22 @@ const ListButton = styled.button`
   float: right;
 `;
 
-const List = styled.ul``;
+const List = styled.ul`
+  line-height: 1%;
+`;
+
+const ListItem = styled.li`
+  margin-top: 6rem;
+`;
+
+const DeleteButton = styled.button``;
+
+// const BulletPoint = styled.li`
+//   background-image: src='https://www.freeiconspng.com/uploads/yellow-star-icon-21.png';
+//   background-position: 0 0;
+//   background-size: 1.6rem 1.6rem;
+//   background-repeat: no-repeat;
+// `;
 
 function EatOut({ setPage, navigate, eatOutCarbs, setEatOutCarbs }) {
   const categories = data.map((x) => x.category.category); // remove all fluff apart from categories
@@ -80,10 +97,10 @@ function EatOut({ setPage, navigate, eatOutCarbs, setEatOutCarbs }) {
           );
         })}
       </select>
-      <ul>
+      <List>
         {data.map((x) => {
           return x.category.category === category ? (
-            <li>
+            <ListItem>
               <H3> {x.item} </H3>
               <P> Carbohydrates: {x.carbs + 'g' || 'N/A'} </P>
               <ListButton
@@ -102,10 +119,10 @@ function EatOut({ setPage, navigate, eatOutCarbs, setEatOutCarbs }) {
                 {' '}
                 Add{' '}
               </ListButton>
-            </li>
+            </ListItem>
           ) : null;
         })}
-      </ul>
+      </List>
       <section className='addedItems'>
         <h2>Added Items: </h2>
         <div className='addedList'>
@@ -114,8 +131,8 @@ function EatOut({ setPage, navigate, eatOutCarbs, setEatOutCarbs }) {
               return (
                 <li>
                   <h3>{item.item}</h3>
-                  <p>{item.carbs}g</p>
-                  <button
+                  <P>{item.carbs}g</P>
+                  <ListButton
                     onClick={(event) => {
                       // create new array without current element
                       const filteredArray = addedItems.filter(
@@ -130,8 +147,8 @@ function EatOut({ setPage, navigate, eatOutCarbs, setEatOutCarbs }) {
                       );
                     }}
                   >
-                    Remove Item
-                  </button>
+                    <img src='dustbin.png' />
+                  </ListButton>
                 </li>
               );
             })}
@@ -140,9 +157,9 @@ function EatOut({ setPage, navigate, eatOutCarbs, setEatOutCarbs }) {
         {/* {addedItems ? <ul>{[...addedItems]}</ul> : null} */}
         {/* <p>Total Carbs:</p> */}
         <p id='total'>{eatOutCarbs}g</p>
-        <HomeLink href='/calculator' onClick={navigate}>
+        <CalculatorLink href='/calculator' onClick={navigate}>
           Add to Calculator
-        </HomeLink>
+        </CalculatorLink>
       </section>
     </Border>
   );
