@@ -6,9 +6,10 @@
   left: 0;
   max-height: 20em;
   border: solid 2px #41403e;
+  max-height: 20vh;
 }
 
 .addedList {
   max-height: 200;
-  overflow: 'auto';
+  overflow: scroll;
 }
