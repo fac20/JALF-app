@@ -9,13 +9,13 @@ import './styles.scss';
 import {
   Button,
   Fieldset,
-  Container,
-  Container2,
-  StyledInputBox,
   CalculatorContainer,
+  RatioContainer,
   Img,
 } from '../styledComponents/calculator';
 import Doctor from './doctor.png';
+import HomeButton from './HomeButton';
+import addData from '../utils/addData';
 
 export default function Calculator({ eatOutCarbs }) {
   const [value, setValue] = React.useState(false);
@@ -35,7 +35,6 @@ export default function Calculator({ eatOutCarbs }) {
   };
   const handleExerciseChange = () => {
     setExercise(!exercise);
-    // (exercise ? displayExerciseForm : null)
   };
   const handlePeriodChange = () => {
     setPeriod(!period);
@@ -44,97 +43,99 @@ export default function Calculator({ eatOutCarbs }) {
   return (
     <>
       {/* <Switch isOn={unitSwitch} handleToggle={() => setUnitSwitch(!unitSwitch)} /> */}
-
-      <Container>
+      <HomeButton />
+      <CalculatorContainer>
         <Img src={Doctor} />
-        <CalculatorContainer className='calculator'>
-          <Container2>
-            <InputBox
-              label='Blood Glucose Level'
-              setStateFunction={setBloodGlucose}
-              state={bloodGlucose}
-            />
-          </Container2>
-          <label htmlFor='carbPortion'></label>
-          {/* <input id='carbPortion' type='text' value={carbPortion} ></input> */}
-          <InputBox
-            label='Carbohydrate (g)'
-            setStateFunction={setCarbPortion}
-            initialValue={carbPortion}
-          />
-          <Container2>
-            <InputBox label='Ratio' placeholder='units' setStateFunction={setInsulinRatio} />
-            <span>:</span>
-            <InputBox placeholder='carbs' setStateFunction={setCarbRatio} />
-            <span>g</span>
-          </Container2>
-          <Fieldset>
-            <Checkbox
-              animation='smooth'
-              shape='curve'
-              color='primary-o'
-              name='health'
-              onChange={handleUnwellChange}
-            >
-              Feeling unwell?
-            </Checkbox>
+        <InputBox
+          label='Blood Glucose Level'
+          setStateFunction={setBloodGlucose}
+          state={bloodGlucose}
+        />
 
-            <Checkbox
-              animation='smooth'
-              shape='curve'
-              color='primary-o'
-              name='exercise'
-              onChange={handleExerciseChange}
-            >
-              Exercise?
-            </Checkbox>
-            {exercise ? (
-              <div>
-                <InputBox label='Duration (mins)?' />
-                <label htmlFor='intensity'>Intensity?</label>
-                <select name='intensity' id='intensity'>
-                  <option value='low'>Low</option>
-                  <option value='mid'>Mid</option>
-                  <option value='high'>High</option>
-                </select>
-              </div>
-            ) : null}
-
-            <Checkbox
-              animation='smooth'
-              shape='curve'
-              color='primary-o'
-              name='period'
-              onChange={handlePeriodChange}
-            >
-              Period?
-            </Checkbox>
-          </Fieldset>
-          <div className='toggle'></div>
-          <Button
-            type='submit'
-            onClick={() => {
-              const result = Calculate(
-                bloodGlucose,
-                carbPortion,
-                insulinRatio,
-                carbRatio,
-                4,
-                10,
-                false,
-                15,
-                30,
-                unwell,
-              );
-              setResult(result);
-            }}
+        <InputBox
+          label='Carbohydrate (g)'
+          setStateFunction={setCarbPortion}
+          initialValue={carbPortion}
+        />
+        <RatioContainer>
+          <InputBox label='Ratio' placeholder='units' setStateFunction={setInsulinRatio} />
+          <span>:</span>
+          <InputBox placeholder='carbs' setStateFunction={setCarbRatio} />
+          <span>g</span>
+        </RatioContainer>
+        <Fieldset>
+          <Checkbox
+            animation='smooth'
+            shape='curve'
+            color='primary-o'
+            name='health'
+            onChange={handleUnwellChange}
           >
-            Calculate!
-          </Button>
+            Feeling unwell?
+          </Checkbox>
 
-          {result ? <output>{result}</output> : null}
-        </CalculatorContainer>
-      </Container>
+          <Checkbox
+            animation='smooth'
+            shape='curve'
+            color='primary-o'
+            name='exercise'
+            onChange={handleExerciseChange}
+          >
+            Exercise?
+          </Checkbox>
+          {exercise ? (
+            <div>
+              <InputBox label='Duration (mins)?' />
+              <label htmlFor='intensity'>Intensity?</label>
+              <select name='intensity' id='intensity'>
+                <option value='low'>Low</option>
+                <option value='mid'>Mid</option>
+                <option value='high'>High</option>
+              </select>
+            </div>
+          ) : null}
+
+          <Checkbox
+            animation='smooth'
+            shape='curve'
+            color='primary-o'
+            name='period'
+            onChange={handlePeriodChange}
+          >
+            Period?
+          </Checkbox>
+        </Fieldset>
+        <div className='toggle'></div>
+        <Button
+          type='submit'
+          onClick={() => {
+            const result = Calculate(
+              bloodGlucose,
+              carbPortion,
+              insulinRatio,
+              carbRatio,
+              4,
+              10,
+              false,
+              15,
+              30,
+              unwell,
+            );
+            setResult(result);
+          }}
+        >
+          Calculate!
+        </Button>
+        <Button
+          onClick={() => {
+            addData('test', 'testemail', bloodGlucose);
+          }}
+        >
+          Store these entries
+        </Button>
+
+        {result ? <output>{result}</output> : null}
+      </CalculatorContainer>
     </>
   );
 }
@@ -142,22 +143,20 @@ export default function Calculator({ eatOutCarbs }) {
 export function Switch({ isOn, handleToggle }) {
   return (
     <>
-      <Container2>
-        <input
-          checked={isOn}
-          onChange={handleToggle}
-          className='react-switch-checkbox'
-          id={`react-switch-new`}
-          type='checkbox'
-        />
-        <label
-          style={{ background: isOn && '#FFC7CD' }}
-          className='react-switch-label'
-          htmlFor={`react-switch-new`}
-        >
-          <span className={`react-switch-button`} />
-        </label>
-      </Container2>
+      <input
+        checked={isOn}
+        onChange={handleToggle}
+        className='react-switch-checkbox'
+        id={`react-switch-new`}
+        type='checkbox'
+      />
+      <label
+        style={{ background: isOn && '#FFC7CD' }}
+        className='react-switch-label'
+        htmlFor={`react-switch-new`}
+      >
+        <span className={`react-switch-button`} />
+      </label>
     </>
   );
 }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Input } from '../styledComponents/calculator';
-import './formComponents.css';
 
 export function InputBox({ label, placeholder, setStateFunction, state, type, initialValue }) {
   const [input, setInput] = React.useState(initialValue || '');

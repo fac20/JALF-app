@@ -10,7 +10,6 @@ function Calculate(
   duration,
   unwell,
 ) {
-  //range = [4,10]
   let ratio = parseFloat(carbRatio) / parseFloat(insulinRatio);
   let correctionDose = 0;
   if (parseFloat(bloodGlucose) > parseFloat(max)) {

@@ -7,7 +7,13 @@ body {
   align-items: center;
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 700px) {
+  html {
+    font-size: 0.7rem;
+  }
+}
+
+@media screen and (max-width: 490px) {
   html {
     font-size: 0.5rem;
   }
