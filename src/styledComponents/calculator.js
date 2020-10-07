@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Button = styled.button`
   font-size: 35px;
   padding: 1rem;
+  margin: 1rem;
   border-radius: 20px;
   box-shadow: 3px 3px 1px #223a70;
   background: #1ea0be;
@@ -16,6 +17,7 @@ export const Input = styled.input`
   padding-top: 0.6rem;
   font-size: 1.5rem;
   margin-left: 0.5rem;
+  margin-top: 1rem;
 `;
 
 export const Fieldset = styled.fieldset`
@@ -34,7 +36,7 @@ export const Img = styled.img`
 
 export const CalculatorContainer = styled.div`
   width: 80vw;
-  height: 80vh;
+  /* height: 80vh; */
   border: 9px solid #ffc7cd;
   border-radius: 20px;
   box-shadow: 10px 10px 5px #223a70;
