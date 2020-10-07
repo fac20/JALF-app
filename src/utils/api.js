@@ -13,10 +13,10 @@ function request(url, options) {
 
 //POST request for login
 
-export function loginSubmit(username, password, url) {
+export function loginSubmit(email, password, url) {
   return request(url, {
     method: 'POST',
-    body: JSON.stringify({ username, password }),
+    body: JSON.stringify({ email, password }),
     headers: { 'content-type': 'application/json' },
   });
 }
