@@ -1,5 +1,6 @@
 import React from 'react';
 import { InputBox } from './components/formComponents';
+import { signupSubmit } from './utils/api';
 
 function SignUp({ setPage, navigate }) {
   const [email, setEmail] = React.useState('');
@@ -12,7 +13,14 @@ function SignUp({ setPage, navigate }) {
     <div>
       {/* <BackButton /> */}
       {/* Image placeholder */}
-      <form>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          const email = event.target.elements.email.value;
+          const password = event.target.elements.password.value;
+          signupSubmit(email, password, 'https://jalf.herokuapp.com/signup');
+        }}
+      >
         <InputBox
           type='email'
           label='email'
@@ -29,7 +37,7 @@ function SignUp({ setPage, navigate }) {
 
         <input
           type='submit'
-          value='Log In'
+          value='Sign Up'
           onClick={(event) => {
             event.preventDefault();
             window.location = '/home';
