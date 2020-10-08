@@ -18,24 +18,16 @@ function Calculate(
     correctionDose = Math.ceil((parseFloat(bloodGlucose) - parseFloat(max)) / 3);
   } else if (bloodGlucose < 4) {
     Swal.fire({
-      title: 'Blood Glucose too low!',
+      title: 'Blood Glucose too low, do not take any insulin!',
       text:
-        'Do not take any insulin and eat 20g of quick-acting sugar and check your blood glucose levels again in 20 minutes!',
+        'Eat 20g of quick-acting sugar and check your blood glucose levels again in 20 minutes.',
       icon: 'warning',
-      iconColor: '#A2E9FF',
-      confirmButtonColor: 'hsl(354, 100%, 89%)',
+      iconColor: 'hsl(191, 73%, 43%)',
+      confirmButtonColor: 'hsl(191, 73%, 43%)',
       confirmButtonText: 'Pronto, Sugar Wizard!',
-      padding: '3em',
       background: 'hsl(354, 100%, 89%)',
-      backdrop: `
-      #ADEBE2
-      url("/images/nyan-cat.gif")
-      left top
-      no-repeat`,
+      backdrop: `hsl(190, 93%, 84%)`,
     });
-    // window.alert('Blood Glucose too low!');
-    //display warning message that blood sugar is too low, eat 20 grams of
-    //quick acting sugar - don't do any insulin until your blood glucose is within a safe range
   }
   let units = carbPortion / ratio;
   let totalUnits = correctionDose + units;
