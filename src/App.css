@@ -18,3 +18,9 @@ body {
     font-size: 0.5rem;
   }
 }
+
+/* @media screen and (max-width: 420px) {
+  #home-container {
+    width: 90vw;
+  }
+} */

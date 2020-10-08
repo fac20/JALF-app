@@ -9,7 +9,6 @@ const CalculatorLink = styled.a`
   margin-left: 50%;
   padding: 1rem;
   background-color: hsl(354, 100%, 89%);
-  /* color: #223a70; */
   font-family: 'Poppins', sans-serif;
   font-size: 1rem;
   font-weight: 600;
@@ -25,10 +24,6 @@ const CalculatorLink = styled.a`
 const Border = styled.div`
   padding: 1rem;
   margin: 1rem;
-  /* @media (min-width: 1024px) {
-    position: relative;
-    right: 35%; */
-  }
 `;
 
 const H1 = styled.h1`

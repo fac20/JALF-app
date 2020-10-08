@@ -45,7 +45,6 @@ export const Img = styled.img`
 
 export const CalculatorContainer = styled.div`
   width: 80vw;
-  /* height: 80vh; */
   border: 9px solid #ffc7cd;
   border-radius: 20px;
   box-shadow: 10px 10px 5px #223a70;
