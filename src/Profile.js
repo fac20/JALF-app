@@ -28,7 +28,7 @@ export default function Profile({ setPage, navigate }) {
   const [data, setData] = React.useState([]);
 
   React.useEffect(() => {
-    getData('http://localhost:3000/api/profile', {
+    getData('https://jalf.herokuapp.com/api/profile', {
       method: 'GET',
       headers: {
         Authorization: 'Bearer ' + window.localStorage.getItem('access_token'),

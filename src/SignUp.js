@@ -43,7 +43,6 @@ const Container = styled.div`
   box-shadow: 5px 5px 5px #223a70;
 `;
 
-
 function SignUp({ setPage, navigate }) {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -52,7 +51,6 @@ function SignUp({ setPage, navigate }) {
   const [carbRatio, setCarbRatio] = React.useState('');
 
   return (
-
     <>
       <HomeButton />
       <Container>
@@ -79,14 +77,14 @@ function SignUp({ setPage, navigate }) {
             type='submit'
             value='Sign Up'
             onClick={(event) => {
-            event.preventDefault();
-            signupSubmit(email, password, 'http://localhost:3000/api/signup')
-              .then((res) => {
-                window.localStorage.setItem('access_token', res.token);
-                window.location = '/home';
-                navigate();
-              })
-              .catch((err) => console.log(err))ate();
+              event.preventDefault();
+              signupSubmit(email, password, 'https://jalf.herokuapp.com/api/signup')
+                .then((res) => {
+                  window.localStorage.setItem('access_token', res.token);
+                  window.location = '/home';
+                  navigate();
+                })
+                .catch((err) => console.log(err));
             }}
           ></SignUpButton>
         </form>
