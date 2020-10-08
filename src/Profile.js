@@ -6,44 +6,31 @@ import './Profile.css';
 import Highcharts from 'highcharts';
 import highchartsMore from 'highcharts/highcharts-more';
 import HighchartsReact from 'highcharts-react-official';
+import { getData } from './utils/api.js';
 highchartsMore(Highcharts);
-
-const checkResponse = (response) => {
-  if (response.status !== 200) {
-    console.log(`Error with the request! ${response.status}`);
-    return;
-  }
-  return response.json();
-};
-
-const getData = (url, options) => {
-  return fetch(url, options)
-    .then(checkResponse)
-    .catch((err) => {
-      throw new Error(`fetch getUserData failed ${err}`);
-    });
-};
 
 export default function Profile({ setPage, navigate }) {
   const [data, setData] = React.useState([]);
 
   React.useEffect(() => {
+    console.log('token', window.localStorage.getItem('access_token'));
     getData('https://jalf.herokuapp.com/api/profile', {
       method: 'GET',
       headers: {
         Authorization: 'Bearer ' + window.localStorage.getItem('access_token'),
       },
-      // window.localStorage.getItem('access_token') },
-    }).then((res) => {
-      const glucose = res.data.glucose_reading;
-      const time = res.data.time;
-      const dataTimeArray = [];
-      for (let i = 0; i < time.length; i++) {
-        dataTimeArray.push([time[i], glucose[i]]); // why does data[0][0] come back undefined?
-      }
-      console.log(dataTimeArray);
-      setData(dataTimeArray);
-    });
+    })
+      .then((res) => {
+        const glucose = res.data.glucose_reading;
+        const time = res.data.time;
+        const dataTimeArray = [];
+        for (let i = 0; i < time.length; i++) {
+          dataTimeArray.push([time[i], glucose[i]]); // why does data[0][0] come back undefined?
+        }
+        console.log(dataTimeArray);
+        setData(dataTimeArray);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   const options = {

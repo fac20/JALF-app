@@ -130,7 +130,8 @@ export default function Calculator({ eatOutCarbs }) {
         </Button>
         <EntriesButton
           onClick={() => {
-            addData(bloodGlucose);
+            const token = window.localStorage.getItem('access_token');
+            addData(token, bloodGlucose);
           }}
         >
           Store these entries

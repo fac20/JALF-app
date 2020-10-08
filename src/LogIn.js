@@ -24,13 +24,13 @@ function LogIn({ setPage, navigate }) {
           value='Log In'
           onClick={(event) => {
             event.preventDefault();
-            loginSubmit(email, password, 'https://jalf.herokuapp.com/login')
+            loginSubmit(email, password, 'https://jalf.herokuapp.com/api/login')
               .then((res) => {
                 localStorage.setItem('access_token', res.token);
+                window.location = '/home';
+                navigate();
               })
               .catch((err) => console.log(err));
-            window.location = '/home';
-            navigate();
           }}
         ></input>
       </form>
