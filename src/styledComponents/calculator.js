@@ -21,7 +21,6 @@ export const EntriesButton = styled.button`
 `;
 
 export const Input = styled.input`
-  width: 6rem;
   height: 2rem;
   border-radius: 10px;
   padding-top: 0.6rem;
