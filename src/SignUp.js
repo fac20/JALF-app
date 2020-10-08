@@ -1,6 +1,6 @@
 import React from 'react';
 import { InputBox } from './components/formComponents';
-import { signupSubmit } from './utils/api';
+import { signupSubmit, request } from './utils/api';
 
 function SignUp({ setPage, navigate }) {
   const [email, setEmail] = React.useState('');
@@ -40,13 +40,13 @@ function SignUp({ setPage, navigate }) {
           value='Sign Up'
           onClick={(event) => {
             event.preventDefault();
-            signupSubmit(email, password, 'https://jalf.herokuapp.com/api/signup')
+            signupSubmit(email, password, 'http://localhost:3000/api/signup')
               .then((res) => {
-                localStorage.setItem('access_token', res.token);
+                window.localStorage.setItem('access_token', res.token);
+                window.location = '/home';
+                navigate();
               })
               .catch((err) => console.log(err));
-            window.location = '/home';
-            navigate();
           }}
         ></input>
       </form>

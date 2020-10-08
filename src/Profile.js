@@ -28,9 +28,12 @@ export default function Profile({ setPage, navigate }) {
   const [data, setData] = React.useState([]);
 
   React.useEffect(() => {
-    getData('https://jalf.herokuapp.com/api/profile', {
+    getData('http://localhost:3000/api/profile', {
       method: 'GET',
-      headers: { Authorization: 'Bearer ' + window.localStorage.getItem('access_token') },
+      headers: {
+        Authorization: 'Bearer ' + window.localStorage.getItem('access_token'),
+      },
+      // window.localStorage.getItem('access_token') },
     }).then((res) => {
       const glucose = res.data.glucose_reading;
       const time = res.data.time;
@@ -38,6 +41,7 @@ export default function Profile({ setPage, navigate }) {
       for (let i = 0; i < time.length; i++) {
         dataTimeArray.push([time[i], glucose[i]]); // why does data[0][0] come back undefined?
       }
+      console.log(dataTimeArray);
       setData(dataTimeArray);
     });
   }, []);
