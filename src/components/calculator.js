@@ -130,7 +130,7 @@ export default function Calculator({ eatOutCarbs }) {
         </Button>
         <EntriesButton
           onClick={() => {
-            addData('test', 'testemail', bloodGlucose);
+            addData(bloodGlucose);
           }}
         >
           Store these entries

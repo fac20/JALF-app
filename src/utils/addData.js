@@ -1,10 +1,10 @@
-function addData(name, email, glucose_reading) {
+function addData(id, glucose_reading) {
   let d = new Date();
   let time = d.getTime();
-  let data = { name, email, glucose_reading, time };
+  let data = { id, glucose_reading, time };
   console.log(data);
-  fetch('http://localhost:3000/api/user', {
-    method: 'POST',
+  fetch('http://localhost:3000/api/store-data', {
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },

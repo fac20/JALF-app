@@ -1,6 +1,8 @@
 import React from 'react';
 import { InputBox } from './components/formComponents';
-import { signupSubmit } from './utils/api';
+
+import { signupSubmit, request } from './utils/api';
+
 import styled from 'styled-components';
 import HomeButton from './components/HomeButton';
 // import { Input } from '../styledComponents/calculator';
@@ -41,6 +43,7 @@ const Container = styled.div`
   box-shadow: 5px 5px 5px #223a70;
 `;
 
+
 function SignUp({ setPage, navigate }) {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -49,17 +52,11 @@ function SignUp({ setPage, navigate }) {
   const [carbRatio, setCarbRatio] = React.useState('');
 
   return (
+
     <>
       <HomeButton />
       <Container>
-        <form
-          onSubmit={(event) => {
-            event.preventDefault();
-            const email = event.target.elements.email.value;
-            const password = event.target.elements.password.value;
-            signupSubmit(email, password, 'https://jalf.herokuapp.com/signup');
-          }}
-        >
+        <form>
           <InputBox
             type='email'
             label='email'
@@ -82,9 +79,14 @@ function SignUp({ setPage, navigate }) {
             type='submit'
             value='Sign Up'
             onClick={(event) => {
-              event.preventDefault();
-              window.location = '/home';
-              navigate();
+            event.preventDefault();
+            signupSubmit(email, password, 'http://localhost:3000/api/signup')
+              .then((res) => {
+                window.localStorage.setItem('access_token', res.token);
+                window.location = '/home';
+                navigate();
+              })
+              .catch((err) => console.log(err))ate();
             }}
           ></SignUpButton>
         </form>

@@ -16,8 +16,8 @@ const checkResponse = (response) => {
   return response.json();
 };
 
-const getData = (url) => {
-  return fetch(url)
+const getData = (url, options) => {
+  return fetch(url, options)
     .then(checkResponse)
     .catch((err) => {
       throw new Error(`fetch getUserData failed ${err}`);
@@ -28,13 +28,20 @@ export default function Profile({ setPage, navigate }) {
   const [data, setData] = React.useState([]);
 
   React.useEffect(() => {
-    getData('http://localhost:3000/api/user/5f7b3daa99c0a30649607b10').then((res) => {
+    getData('http://localhost:3000/api/profile', {
+      method: 'GET',
+      headers: {
+        Authorization: 'Bearer ' + window.localStorage.getItem('access_token'),
+      },
+      // window.localStorage.getItem('access_token') },
+    }).then((res) => {
       const glucose = res.data.glucose_reading;
       const time = res.data.time;
       const dataTimeArray = [];
       for (let i = 0; i < time.length; i++) {
         dataTimeArray.push([time[i], glucose[i]]); // why does data[0][0] come back undefined?
       }
+      console.log(dataTimeArray);
       setData(dataTimeArray);
     });
   }, []);
