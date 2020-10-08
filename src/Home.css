@@ -1,3 +1,7 @@
+/* #home-container {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+} */
+
 #myprofile {
   grid-area: myprofile;
 }
@@ -13,7 +17,6 @@
 #eatout {
   grid-area: eatout;
 }
-
 #apptutorial {
   grid-area: apptutorial;
 }

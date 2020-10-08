@@ -15,10 +15,13 @@ const HomeLink = styled.a`
 `;
 
 const HomeContainer = styled.div`
+  /* border: 1px solid red; */
   padding-top: 7rem;
   display: grid;
   column-gap: 3rem;
   row-gap: 3rem;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-areas:
     '. myprofile .'
     'resources img calculator'
@@ -28,7 +31,7 @@ const HomeContainer = styled.div`
 
 function Home({ setPage, navigate }) {
   return (
-    <HomeContainer>
+    <HomeContainer id='home-container'>
       <HomeLink href='/myProfile' id='myprofile' onClick={navigate}>
         My Profile
       </HomeLink>

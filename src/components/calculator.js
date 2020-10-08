@@ -11,6 +11,7 @@ import {
   Fieldset,
   CalculatorContainer,
   RatioContainer,
+  EntriesButton,
   Img,
 } from '../styledComponents/calculator';
 import Doctor from './doctor.png';
@@ -59,6 +60,7 @@ export default function Calculator({ eatOutCarbs }) {
         />
         <RatioContainer>
           <InputBox label='Ratio' placeholder='units' setStateFunction={setInsulinRatio} />
+
           <span>:</span>
           <InputBox placeholder='carbs' setStateFunction={setCarbRatio} />
           <span>g</span>
@@ -95,7 +97,7 @@ export default function Calculator({ eatOutCarbs }) {
             </div>
           ) : null}
 
-          <Checkbox
+          {/* <Checkbox
             animation='smooth'
             shape='curve'
             color='primary-o'
@@ -103,7 +105,7 @@ export default function Calculator({ eatOutCarbs }) {
             onChange={handlePeriodChange}
           >
             Period?
-          </Checkbox>
+          </Checkbox> */}
         </Fieldset>
         <div className='toggle'></div>
         <Button
@@ -126,13 +128,13 @@ export default function Calculator({ eatOutCarbs }) {
         >
           Calculate!
         </Button>
-        <Button
+        <EntriesButton
           onClick={() => {
             addData(bloodGlucose);
           }}
         >
           Store these entries
-        </Button>
+        </EntriesButton>
 
         {result ? <output>{result}</output> : null}
       </CalculatorContainer>
