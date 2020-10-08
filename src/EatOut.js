@@ -6,23 +6,24 @@ import './eatOut.css';
 import Dustbin from './dustbin.png';
 
 const CalculatorLink = styled.a`
-  margin: auto;
+  margin-left: 50%;
   padding: 1rem;
   background-color: hsl(354, 100%, 89%);
-  color: #223a70;
+  /* color: #223a70; */
   font-family: 'Poppins', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 600;
   border-radius: 20px;
   text-decoration: none;
   box-shadow: 5px 5px 5px #223a70;
-  @media (min-width: 1024px) {
-    display: block;
-    margin: 0;
+  @media (max-width: 1420px) {
+    display: inline-block;
+    margin: 1rem;
   }
 `;
 
 const Border = styled.div`
+  padding: 1rem;
   margin: 1rem;
   /* @media (min-width: 1024px) {
     position: relative;
@@ -50,6 +51,7 @@ const P = styled.p`
   font-family: 'Roboto', sans-serif;
   display: inline-grid;
   font-size: 1.2rem;
+  font-weight: 500;
 `;
 
 const CategoryLabel = styled.label`
@@ -80,8 +82,6 @@ const ListItem = styled.li`
   font-family: 'Poppins', sans-serif;
   font-size: 1.2rem;
 `;
-
-const DeleteButton = styled.button``;
 
 // const BulletPoint = styled.li`
 //   background-image: src='https://www.freeiconspng.com/uploads/yellow-star-icon-21.png';
@@ -146,44 +146,44 @@ function EatOut({ setPage, navigate, eatOutCarbs, setEatOutCarbs }) {
       </List>
 
       <section className='addedItems'>
-        <div>
-          <H2>Added Items: </H2>
-          <div className='addedList'>
-            <List>
-              {addedItems.map((item, index) => {
-                return (
-                  <ListItem>
-                    <h3>{item.item}</h3>
-                    <P>{item.carbs}g</P>
-                    <ListButton
-                      onClick={(event) => {
-                        // create new array without current element
-                        const filteredArray = addedItems.filter(
-                          (x) => x.item !== event.target.parentNode.childNodes[0].textContent,
-                        );
-                        // set array state to above array
-                        setAddedItems(filteredArray);
-                        // subtract carbs value from total in basket
-                        setEatOutCarbs(
-                          (eatOutCarbs) =>
-                            Math.round((eatOutCarbs - parseFloat(item.carbs)) * 10) / 10,
-                        );
-                      }}
-                    >
-                      <img src='dustbin.png' />
-                    </ListButton>
-                  </ListItem>
-                );
-              })}
-            </List>
+        <Border>
+          <div>
+            <H2>Added Items: </H2>
+            <div className='addedList'>
+              <List>
+                {addedItems.map((item, index) => {
+                  return (
+                    <ListItem>
+                      <H3>{item.item}</H3>
+                      <P>{item.carbs}g</P>
+                      <ListButton
+                        onClick={(event) => {
+                          // create new array without current element
+                          const filteredArray = addedItems.filter(
+                            (x) => x.item !== event.target.parentNode.childNodes[0].textContent,
+                          );
+                          // set array state to above array
+                          setAddedItems(filteredArray);
+                          // subtract carbs value from total in basket
+                          setEatOutCarbs(
+                            (eatOutCarbs) =>
+                              Math.round((eatOutCarbs - parseFloat(item.carbs)) * 10) / 10,
+                          );
+                        }}
+                      ></ListButton>
+                    </ListItem>
+                  );
+                })}
+              </List>
+            </div>
+            {/* {addedItems ? <ul>{[...addedItems]}</ul> : null} */}
+            <P>Total Carbs: </P>
+            <P id='total'>{eatOutCarbs}g</P>
+            <CalculatorLink href='/calculator' onClick={navigate}>
+              Add to Calculator
+            </CalculatorLink>
           </div>
-          {/* {addedItems ? <ul>{[...addedItems]}</ul> : null} */}
-          <P>Total Carbs:</P>
-          <P id='total'>{eatOutCarbs}g</P>
-          <CalculatorLink href='/calculator' onClick={navigate}>
-            Add to Calculator
-          </CalculatorLink>
-        </div>
+        </Border>
       </section>
     </Border>
   );
