@@ -6,6 +6,8 @@ function request(url, options) {
       error.status = response.status;
       throw error;
     } else {
+      localStorage.setItem('access_token', 'fetch successful');
+
       return response.json();
     }
   });
@@ -24,6 +26,7 @@ export function loginSubmit(email, password, url) {
 // POST request for signup
 
 export function signupSubmit(email, password, url) {
+  localStorage.setItem('access_token', 'signupSubmit called');
   return request(url, {
     method: 'POST',
     body: JSON.stringify({ email, password }),

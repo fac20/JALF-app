@@ -15,10 +15,10 @@ function SignUp({ setPage, navigate }) {
       {/* Image placeholder */}
       <form
         onSubmit={(event) => {
-          event.preventDefault();
-          const email = event.target.elements.email.value;
-          const password = event.target.elements.password.value;
-          signupSubmit(email, password, 'https://jalf.herokuapp.com/signup');
+          // console.log('fired');
+          // event.preventDefault();
+          // const email = event.target.elements.email.value;
+          // const password = event.target.elements.password.value;
         }}
       >
         <InputBox
@@ -40,6 +40,11 @@ function SignUp({ setPage, navigate }) {
           value='Sign Up'
           onClick={(event) => {
             event.preventDefault();
+            signupSubmit(email, password, 'https://jalf.herokuapp.com/api/signup')
+              .then((res) => {
+                localStorage.setItem('access_token', res.token);
+              })
+              .catch((err) => console.log(err));
             window.location = '/home';
             navigate();
           }}
