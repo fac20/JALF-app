@@ -78,7 +78,13 @@ function SignUp({ setPage, navigate }) {
             value='Sign Up'
             onClick={(event) => {
               event.preventDefault();
-              signupSubmit(email, password, 'https://jalf.herokuapp.com/api/signup')
+              signupSubmit(
+                email,
+                password,
+                insulinRatio,
+                carbRatio,
+                'https://jalf.herokuapp.com/api/signup',
+              )
                 .then((res) => {
                   window.localStorage.setItem('access_token', res.token);
                   window.location = '/home';

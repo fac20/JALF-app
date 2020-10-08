@@ -26,10 +26,10 @@ export function loginSubmit(email, password, url) {
 
 // POST request for signup
 
-export function signupSubmit(email, password, url) {
+export function signupSubmit(email, password, insulinRatio, carbRatio, url) {
   return fetch(url, {
     method: 'POST',
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ email, password, insulinRatio, carbRatio }),
     headers: { 'content-type': 'application/json' },
   }).then((response) => {
     window.localStorage.setItem('access_token', response.token);
