@@ -21,7 +21,7 @@ export function InputBox({ label, placeholder, setStateFunction, state, type, in
         placeholder={placeholder}
         name={label || placeholder}
         type={type || 'text'}
-        value={input}
+        value={input || initialValue || ''}
         onChange={handleInputChange}
       ></Input>
     </div>
