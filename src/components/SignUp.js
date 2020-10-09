@@ -8,30 +8,25 @@ import HomeButton from './HomeButton';
 // import { Input } from '../styledComponents/calculator';
 
 const RatioContainer = styled.div`
-  width: 60vw;
   display: flex;
   flex-direction: row;
-  /* justify-content: center; */
   align-items: flex-end;
 `;
 
-const H2 = styled.h2`
-  font-family: 'Poppins', sans-serif;
-  font-weight: 900;
-  font-size: 1.5rem;
-`;
-
 const SignUpButton = styled.input`
-  border-radius: 15px;
+  border-radius: 20px;
   background: #1ea0be;
   padding: 1rem;
   margin: 1rem;
   font-family: 'Poppins', sans-serif;
-  font-weight: 600;
+  font-size: 1.5rem;
   color: white;
 `;
 
 const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   position: relative;
   top: 10vh;
   font-family: 'Poppins', sans-serif;
@@ -52,26 +47,40 @@ function SignUp({ setPage, navigate }) {
 
   return (
     <>
-      <HomeButton />
       <Container>
         <form>
           <InputBox
+            className='signup-input'
             type='email'
             label='email'
             placeholder='hi@there.com'
             setStateFunction={setEmail}
           />
 
-          <InputBox type='password' label='password' setStateFunction={setPassword} />
+          <InputBox
+            className='signup-input'
+            type='password'
+            label='password'
+            setStateFunction={setPassword}
+          />
           <InputBox
             type='password'
             label='confirm password'
             setStateFunction={setConfirmPassword}
           />
           <RatioContainer>
-            <InputBox label='Ratio' placeholder='units' setStateFunction={setInsulinRatio} />
+            <InputBox
+              className='signup-input'
+              label='Ratio'
+              placeholder='units'
+              setStateFunction={setInsulinRatio}
+            />
             <span>:</span>
-            <InputBox placeholder='carbohydrates' setStateFunction={setCarbRatio} />
+            <InputBox
+              className='signup-input'
+              placeholder='carbohydrates'
+              setStateFunction={setCarbRatio}
+            />
           </RatioContainer>
           <SignUpButton
             type='submit'

@@ -45,17 +45,19 @@ export default function Calculator({ eatOutCarbs }) {
   };
 
   React.useEffect(() => {
-    getData('https://jalf.herokuapp.com/api/profile', {
-      method: 'GET',
-      headers: {
-        Authorization: 'Bearer ' + window.localStorage.getItem('access_token'),
-      },
-    }).then((res) => {
-      window.localStorage.setItem('response', res.data.insulinRatio);
-      // storedInsulin = res.data.insulinRatio;
-      setInsulinRatio(res.data.insulinRatio);
-      setCarbRatio(res.data.carbRatio);
-    });
+    let token = window.localStorage.getItem('access_token');
+    if (token) {
+      getData('https://jalf.herokuapp.com/api/profile', {
+        method: 'GET',
+        headers: {
+          Authorization: 'Bearer ' + token,
+        },
+      }).then((res) => {
+        window.localStorage.setItem('response', res.data.insulinRatio);
+        setInsulinRatio(res.data.insulinRatio);
+        setCarbRatio(res.data.carbRatio);
+      });
+    }
   }, [insulinRatio, carbRatio]);
 
   return (
