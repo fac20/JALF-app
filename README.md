@@ -15,6 +15,13 @@ People with type 1 (and type 2 diabetes)
 ### What is currently being done to solve this problem?
 There are online insulin calculators available and also online databases for food, but nothing combined. A lot of people don't want to use multiple apps for this and so most end up doing guess work.
 
+## How to get this up and running 
+Unforunately, we ran into a couple of issues with deploying on Heroku, so this needs to be run locally.
+
+First, set up the backend: Clone [this](https://github.com/fac20/JALF-backend) repo, run `npm i` and then `npx nodemon start`.
+
+For the front end: clone this repo, run `npm i` and the `npm start` to start up the front end. 
+
                                                           -----------------------------------------
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
