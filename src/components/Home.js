@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Doctor from './components/doctor.png';
-import './Home.css';
+import Doctor from './doctor.png';
+import '../style/Home.css';
 
 const HomeLink = styled.a`
   margin: auto;

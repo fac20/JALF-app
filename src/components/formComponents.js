@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import { Input } from '../styledComponents/calculator';
 
 export function InputBox({ label, placeholder, setStateFunction, state, type, initialValue }) {
-  const [input, setInput] = React.useState(initialValue || '');
+  const [input, setInput] = React.useState(initialValue);
 
   const handleInputChange = (event) => {
     setInput(event.target.value);
     setStateFunction(event.target.value);
-    console.log(state);
   };
+
+  // React.useEffect(() => {
+
+  // })
 
   return (
     <div className='input-container'>

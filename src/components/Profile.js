@@ -1,19 +1,16 @@
 import React from 'react';
-import { render } from 'react-dom';
-import styled from 'styled-components';
-import './Profile.css';
+import '../style/Profile.css';
 
 import Highcharts from 'highcharts';
 import highchartsMore from 'highcharts/highcharts-more';
 import HighchartsReact from 'highcharts-react-official';
-import { getData } from './utils/api.js';
+import { getData } from '../utils/api.js';
 highchartsMore(Highcharts);
 
 export default function Profile({ setPage, navigate }) {
   const [data, setData] = React.useState([]);
 
   React.useEffect(() => {
-    console.log('token', window.localStorage.getItem('access_token'));
     getData('https://jalf.herokuapp.com/api/profile', {
       method: 'GET',
       headers: {
@@ -27,7 +24,6 @@ export default function Profile({ setPage, navigate }) {
         for (let i = 0; i < time.length; i++) {
           dataTimeArray.push([time[i], glucose[i]]); // why does data[0][0] come back undefined?
         }
-        console.log(dataTimeArray);
         setData(dataTimeArray);
       })
       .catch((err) => console.log(err));

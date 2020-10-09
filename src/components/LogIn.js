@@ -1,6 +1,6 @@
 import React from 'react';
-import { InputBox } from './components/formComponents';
-import { loginSubmit } from './utils/api';
+import { InputBox } from './formComponents';
+import { loginSubmit } from '../utils/api';
 
 function LogIn({ setPage, navigate }) {
   const [email, setEmail] = React.useState('');

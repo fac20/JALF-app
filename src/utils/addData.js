@@ -10,9 +10,7 @@ function addData(token, glucose_reading) {
       Authorization: 'Bearer ' + token,
     },
     body: JSON.stringify(data),
-  })
-    .then(window.localStorage.setItem('data_added', 'hi'))
-    .catch((err) => console.log(err));
+  }).then(window.localStorage.setItem('data_added', 'hi'));
 }
 
 export default addData;
