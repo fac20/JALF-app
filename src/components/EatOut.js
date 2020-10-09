@@ -1,9 +1,8 @@
 import React from 'react';
-import data from './data';
-import HomeButton from './components/HomeButton';
+import data from '../utils/data';
+import HomeButton from './HomeButton';
 import styled from 'styled-components';
-import './eatOut.css';
-import Dustbin from './dustbin.png';
+import '../style/eatOut.css';
 
 const CalculatorLink = styled.a`
   margin-left: 50%;

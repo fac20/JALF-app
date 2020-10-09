@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import Landing from './Landing';
-import Login from './LogIn';
-import Signup from './SignUp';
+import Landing from './components/Landing';
+import Login from './components/LogIn';
+import Signup from './components/SignUp';
 import Calculator from './components/calculator';
-import Home from './Home';
-import EatOut from './EatOut';
-import Profile from './Profile';
+import Home from './components/Home';
+import EatOut from './components/EatOut';
+import Profile from './components/Profile';
 
 function App() {
   const [page, setPage] = React.useState(window.location.pathname);

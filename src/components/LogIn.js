@@ -1,6 +1,6 @@
 import React from 'react';
-import { InputBox } from './components/formComponents';
-import { loginSubmit } from './utils/api';
+import { InputBox } from './formComponents';
+import { loginSubmit } from '../utils/api';
 import styled from 'styled-components';
 
 const Container = styled.form`
@@ -33,21 +33,22 @@ function LogIn({ setPage, navigate }) {
     <Container>
       <InputBox type='email' label='email' placeholder='hi@there.com' setStateFunction={setEmail} />
       <InputBox type='password' label='password' setStateFunction={setPassword} />
-
-      <LogInButton
-        type='submit'
-        value='Log In'
-        onClick={(event) => {
-          event.preventDefault();
-          loginSubmit(email, password, 'https://jalf.herokuapp.com/login')
-            .then((res) => {
-              localStorage.setItem('access_token', res.token);
-            })
-            .catch((err) => console.log(err));
-          window.location = '/home';
-          navigate();
-        }}
-      ></LogInButton>
+      <form>
+        <input
+          type='submit'
+          value='Log In'
+          onClick={(event) => {
+            event.preventDefault();
+            loginSubmit(email, password, 'https://jalf.herokuapp.com/api/login')
+              .then((res) => {
+                localStorage.setItem('access_token', res.token);
+                window.location = '/home';
+                navigate();
+              })
+              .catch((err) => console.log(err));
+          }}
+        ></input>
+      </form>
     </Container>
   );
 }

@@ -1,10 +1,11 @@
 import React from 'react';
-import { InputBox } from './components/formComponents';
+import { InputBox } from './formComponents';
 
-import { signupSubmit, request } from './utils/api';
+import { signupSubmit, request } from '../utils/api';
 
 import styled from 'styled-components';
-import HomeButton from './components/HomeButton';
+import HomeButton from './HomeButton';
+// import { Input } from '../styledComponents/calculator';
 
 const RatioContainer = styled.div`
   display: flex;
