@@ -27,6 +27,9 @@ export const Input = styled.input`
   font-size: 1.5rem;
   margin-left: 0.5rem;
   margin-top: 1rem;
+  @media (max-width: 420px) {
+    width: 9.5rem;
+  }
 `;
 
 export const Fieldset = styled.fieldset`
