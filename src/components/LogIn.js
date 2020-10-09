@@ -34,7 +34,7 @@ function LogIn({ setPage, navigate }) {
       <InputBox type='email' label='email' placeholder='hi@there.com' setStateFunction={setEmail} />
       <InputBox type='password' label='password' setStateFunction={setPassword} />
       <form>
-        <input
+        <LogInButton
           type='submit'
           value='Log In'
           onClick={(event) => {
@@ -47,7 +47,7 @@ function LogIn({ setPage, navigate }) {
               })
               .catch((err) => console.log(err));
           }}
-        ></input>
+        ></LogInButton>
       </form>
     </Container>
   );

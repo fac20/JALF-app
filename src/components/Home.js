@@ -15,7 +15,6 @@ const HomeLink = styled.a`
 `;
 
 const HomeContainer = styled.div`
-  /* border: 1px solid red; */
   padding-top: 7rem;
   display: grid;
   column-gap: 3rem;
