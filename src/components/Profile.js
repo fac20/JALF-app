@@ -22,7 +22,7 @@ export default function Profile({ setPage, navigate }) {
         const time = res.data.time;
         const dataTimeArray = [];
         for (let i = 0; i < time.length; i++) {
-          dataTimeArray.push([time[i], glucose[i]]); // why does data[0][0] come back undefined?
+          dataTimeArray.push([time[i], glucose[i]]);
         }
         setData(dataTimeArray);
       })

@@ -26,6 +26,13 @@ const HomeContainer = styled.div`
     'resources img calculator'
     'eatin img eatout'
     '. apptutorial .';
+  @media only screen and (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    img {
+      display: none;
+    }
+  }
 `;
 
 function Home({ setPage, navigate }) {

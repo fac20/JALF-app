@@ -27,14 +27,14 @@ const Nav = styled.div`
 const Title = styled.h1`
   font-size: 2rem;
   color: #223a70;
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'Quicksand', sans-serif;
   width: 50%;
 `;
 
 const Subtitle = styled.h2`
   font-size: 1.5rem;
   color: #223a70;
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'Quicksand', sans-serif;
   width: 50%;
 `;
 
