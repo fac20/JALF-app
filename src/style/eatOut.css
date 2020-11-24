@@ -1,0 +1,46 @@
+.addedItems {
+  position: fixed;
+  bottom: 0;
+  background-color: #00bed9;
+  width: 100vw;
+  left: 0;
+  max-height: 20em;
+  border: solid 2px #41403e;
+  max-height: 20vh;
+  overflow-y: scroll;
+}
+
+.addedList {
+  max-height: 200;
+}
+
+@media screen and (min-width: 1024px) {
+  .addedItems {
+    position: fixed;
+    top: 15vh;
+    left: 70vw;
+    background-color: #00bed9;
+    width: 30vw;
+    max-height: 80vh;
+    border: solid 2px #41403e;
+    overflow-y: scroll;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  html {
+    font-size: 1rem;
+  }
+  h3 {
+    font-size: 0.7rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  html {
+    font-size: 0.8rem;
+  }
+  h3 {
+    font-size: 0.6rem;
+  }
+}

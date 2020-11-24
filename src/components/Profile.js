@@ -1,42 +1,32 @@
 import React from 'react';
-import { render } from 'react-dom';
-import styled from 'styled-components';
-import './Profile.css';
+import '../style/Profile.css';
 
 import Highcharts from 'highcharts';
 import highchartsMore from 'highcharts/highcharts-more';
 import HighchartsReact from 'highcharts-react-official';
+import { getData } from '../utils/api.js';
 highchartsMore(Highcharts);
-
-const checkResponse = (response) => {
-  if (response.status !== 200) {
-    console.log(`Error with the request! ${response.status}`);
-    return;
-  }
-  return response.json();
-};
-
-const getData = (url) => {
-  return fetch(url)
-    .then(checkResponse)
-    .catch((err) => {
-      throw new Error(`fetch getUserData failed ${err}`);
-    });
-};
 
 export default function Profile({ setPage, navigate }) {
   const [data, setData] = React.useState([]);
 
   React.useEffect(() => {
-    getData('http://localhost:3000/api/user/5f7b3daa99c0a30649607b10').then((res) => {
-      const glucose = res.data.glucose_reading;
-      const time = res.data.time;
-      const dataTimeArray = [];
-      for (let i = 0; i < time.length; i++) {
-        dataTimeArray.push([time[i], glucose[i]]); // why does data[0][0] come back undefined?
-      }
-      setData(dataTimeArray);
-    });
+    getData('https://jalf.herokuapp.com/api/profile', {
+      method: 'GET',
+      headers: {
+        Authorization: 'Bearer ' + window.localStorage.getItem('access_token'),
+      },
+    })
+      .then((res) => {
+        const glucose = res.data.glucose_reading;
+        const time = res.data.time;
+        const dataTimeArray = [];
+        for (let i = 0; i < time.length; i++) {
+          dataTimeArray.push([time[i], glucose[i]]);
+        }
+        setData(dataTimeArray);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   const options = {

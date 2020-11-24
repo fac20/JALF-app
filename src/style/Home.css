@@ -1,0 +1,31 @@
+/* #home-container {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+} */
+
+#myprofile {
+  grid-area: myprofile;
+}
+
+#resources {
+  grid-area: resources;
+}
+
+#eatin {
+  grid-area: eatin;
+}
+
+#eatout {
+  grid-area: eatout;
+}
+#apptutorial {
+  grid-area: apptutorial;
+}
+
+#doctor {
+  grid-area: img;
+  justify-self: center;
+}
+
+#calculator {
+  grid-area: calculator;
+}

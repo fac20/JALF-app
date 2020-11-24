@@ -1,25 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './toggle.css';
+import '../style/toggle.css';
 import { InputBox } from './formComponents';
 import Calculate from '../utils/calculate';
 import styled from 'styled-components';
 import { Checkbox } from 'pretty-checkbox-react';
-import './styles.scss';
+import '../style/styles.scss';
 import {
   Button,
   Fieldset,
   CalculatorContainer,
   RatioContainer,
+  EntriesButton,
   Img,
 } from '../styledComponents/calculator';
 import Doctor from './doctor.png';
 import HomeButton from './HomeButton';
+import addData from '../utils/addData';
+import { getData } from '../utils/api';
 
 export default function Calculator({ eatOutCarbs }) {
   const [value, setValue] = React.useState(false);
   const [unwell, setUnwell] = React.useState(false);
   const [exercise, setExercise] = React.useState(false);
+  const [duration, setDuration] = React.useState(0);
+  const [intensity, setIntensity] = React.useState(0);
   const [period, setPeriod] = React.useState(false);
   const [unitSwitch, setUnitSwitch] = React.useState(true);
 
@@ -39,6 +44,22 @@ export default function Calculator({ eatOutCarbs }) {
     setPeriod(!period);
   };
 
+  React.useEffect(() => {
+    let token = window.localStorage.getItem('access_token');
+    if (token) {
+      getData('https://jalf.herokuapp.com/api/profile', {
+        method: 'GET',
+        headers: {
+          Authorization: 'Bearer ' + token,
+        },
+      }).then((res) => {
+        window.localStorage.setItem('response', res.data.insulinRatio);
+        setInsulinRatio(res.data.insulinRatio);
+        setCarbRatio(res.data.carbRatio);
+      });
+    }
+  }, [insulinRatio, carbRatio]);
+
   return (
     <>
       {/* <Switch isOn={unitSwitch} handleToggle={() => setUnitSwitch(!unitSwitch)} /> */}
@@ -57,9 +78,15 @@ export default function Calculator({ eatOutCarbs }) {
           initialValue={carbPortion}
         />
         <RatioContainer>
-          <InputBox label='Ratio' placeholder='units' setStateFunction={setInsulinRatio} />
+          <InputBox
+            label='Ratio'
+            placeholder='units'
+            initialValue={insulinRatio}
+            setStateFunction={setInsulinRatio}
+          />
+
           <span>:</span>
-          <InputBox placeholder='carbs' setStateFunction={setCarbRatio} />
+          <InputBox placeholder='carbs' initialValue={carbRatio} setStateFunction={setCarbRatio} />
           <span>g</span>
         </RatioContainer>
         <Fieldset>
@@ -84,25 +111,21 @@ export default function Calculator({ eatOutCarbs }) {
           </Checkbox>
           {exercise ? (
             <div>
-              <InputBox label='Duration (mins)?' />
+              <InputBox label='Duration (mins)?' setStateFunction={setDuration} />
               <label htmlFor='intensity'>Intensity?</label>
-              <select name='intensity' id='intensity'>
+              <select
+                name='intensity'
+                id='intensity'
+                onChange={(event) => {
+                  setIntensity(event.target.value);
+                }}
+              >
                 <option value='low'>Low</option>
                 <option value='mid'>Mid</option>
                 <option value='high'>High</option>
               </select>
             </div>
           ) : null}
-
-          <Checkbox
-            animation='smooth'
-            shape='curve'
-            color='primary-o'
-            name='period'
-            onChange={handlePeriodChange}
-          >
-            Period?
-          </Checkbox>
         </Fieldset>
         <div className='toggle'></div>
         <Button
@@ -115,9 +138,9 @@ export default function Calculator({ eatOutCarbs }) {
               carbRatio,
               4,
               10,
-              false,
-              15,
-              30,
+              exercise,
+              intensity,
+              duration,
               unwell,
             );
             setResult(result);
@@ -125,6 +148,14 @@ export default function Calculator({ eatOutCarbs }) {
         >
           Calculate!
         </Button>
+        <EntriesButton
+          onClick={() => {
+            const token = window.localStorage.getItem('access_token');
+            addData(token, bloodGlucose);
+          }}
+        >
+          Store these entries
+        </EntriesButton>
 
         {result ? <output>{result}</output> : null}
       </CalculatorContainer>
